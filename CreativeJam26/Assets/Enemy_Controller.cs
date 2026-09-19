@@ -87,4 +87,12 @@ public class Enemy_Controller : MonoBehaviour {
         
         lastPosition = transform.position;
     }
+    public void TakeDamage(int dmg)
+    {
+        health -= dmg;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
