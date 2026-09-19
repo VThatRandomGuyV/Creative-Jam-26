@@ -108,7 +108,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   health: 1
   speed: 5
+  gold: 1
   progress: 0
+  spawnFrequency: 0
   isSpawner: 0
   isTransport: 0
   wobbleAmount: 10
@@ -141,6 +143,7 @@ MonoBehaviour:
   backSprite: {fileID: 4933929149420576134, guid: 5e0ef108b807e9341838c8c9665adca4, type: 3}
   sideSprite: {fileID: 7746457967787036535, guid: dcc36c2cb4d46ce46af635bdf55f4960, type: 3}
   spline: {fileID: 0}
+  minion: {fileID: 1451485442180339657}
 --- !u!61 &4279285884880740938
 BoxCollider2D:
   m_ObjectHideFlags: 0
