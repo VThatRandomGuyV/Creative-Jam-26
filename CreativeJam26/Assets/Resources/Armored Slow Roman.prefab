@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8388095960315953007}
   - component: {fileID: 5270012081283317730}
   - component: {fileID: 4807283925361329788}
-  m_Layer: 0
+  - component: {fileID: 3336902881171744867}
+  m_Layer: 6
   m_Name: Armored Slow Roman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,6 +109,8 @@ MonoBehaviour:
   health: 15
   speed: 5
   progress: 0
+  isSpawner: 0
+  isTransport: 0
   wobbleAmount: 10
   wobbleSpeed: 1
   wobbleLerp:
@@ -138,3 +141,49 @@ MonoBehaviour:
   backSprite: {fileID: 4933929149420576134, guid: 5e0ef108b807e9341838c8c9665adca4, type: 3}
   sideSprite: {fileID: 7746457967787036535, guid: dcc36c2cb4d46ce46af635bdf55f4960, type: 3}
   spline: {fileID: 0}
+--- !u!61 &3336902881171744867
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451485442180339657}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
