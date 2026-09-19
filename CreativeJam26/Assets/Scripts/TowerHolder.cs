@@ -9,12 +9,12 @@ public class TowerHolder : MonoBehaviour
     [Header("References")]
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Color hoverColor;
-    [SerializeField] private GameObject towerMenu;
-    private GameObject tower;
+    //[SerializeField] private GameObject towerMenu;
+    [SerializeField] private Tower tower;
     private Color startColor;
 
     private void Start(){
-        towerMenu.SetActive(false);
+        //towerMenu.SetActive(false);
 
         startColor = sr.color;
     }
@@ -24,19 +24,24 @@ public class TowerHolder : MonoBehaviour
     private void OnMouseExit(){
         sr.color = startColor;
     }
-    private void OnMouseDown() {
-        towerMenu.SetActive(true);
-        Debug.Log( this.transform.position);
-        towerMenu.transform.position = this.transform.position;
-        if (tower == null) {
-        Debug.Log(TowerManagement.main.GetSelectedTower().name);
-        Tower towerToBuild = TowerManagement.main.GetSelectedTower();
-        tower = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
-        }
-    }
-    // Update is called once per frame
-    void Update()
+
+    public void OnMouseDown()
     {
         
     }
+    private void SpawnTower1() {
+            //towerMenu.SetActive(true);
+            //Debug.Log( this.transform.position);
+            //towerMenu.transform.position = this.transform.position;
+            //if (tower == null) {
+            //Debug.Log(TowerManagement.main.GetSelectedTower().name);
+            Tower towerToBuild = tower;
+            Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
+            this.gameObject.SetActive(false);
+    }
 }
+    // Update is called once per frame
+    //void Update()
+    //{
+        
+    //}

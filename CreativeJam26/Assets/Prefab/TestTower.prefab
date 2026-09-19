@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7538084455693043616}
   - component: {fileID: 3151962958817058397}
+  - component: {fileID: 4448303485103247202}
   m_Layer: 0
   m_Name: TestTower
   m_TagString: Untagged
@@ -92,3 +93,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &4448303485103247202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477995317759158382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3769451347f791a4e8c40a92418ffcc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerOperation
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 64
+  bulletPrefab: {fileID: 8300357504235132859, guid: 7292ab2d7968d424bb7db9a5c054507a, type: 3}
+  firingPoint: {fileID: 7538084455693043616}
+  range: 100
+  bps: 1
