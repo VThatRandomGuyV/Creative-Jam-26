@@ -6,6 +6,8 @@ public class Enemy_Controller : MonoBehaviour {
     public int health;
     public int speed;
     public float progress;
+    public bool isSpawner;
+    public bool isTransport;
     
     [Header("Wobble Sprite")]
     public float wobbleAmount;
@@ -21,17 +23,20 @@ public class Enemy_Controller : MonoBehaviour {
     private float angleState;
     public Spline spline;
     private Vector3 lastPosition;
-
-    void Awake() {
-    }
+    private Vector3 offset;
     
     void Start() {
         transform.position = spline.GetPositionOnSpline(0);
+        
+        // create an offset from the spline so that enemies arent on top of each other
+        float x = Random.Range(-.2f, .2f);
+        float y = Random.Range(-.2f, .2f);
+        offset = new Vector3(x, y);
     }
     
     void Update() {
         progress += Time.deltaTime * (speed / 100f);
-        transform.position = spline.GetPositionOnSpline(progress);
+        transform.position = spline.GetPositionOnSpline(progress) + offset;
         
         // if at the end of path deplete health and disappear
         if (progress >= 1f) {

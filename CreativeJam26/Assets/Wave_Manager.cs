@@ -10,20 +10,22 @@ public class Wave_Manager : MonoBehaviour {
     private Enemy_Spawner spawner;
 
     // enemy types
-    public GameObject enemy1;
-    public GameObject enemy2;
-    public GameObject enemy3;
+    public List<GameObject> enemies;
+    
 
     void Awake() {
         spawner = enemySpawner.GetComponent<Enemy_Spawner>();
-
-        //enemy1 = Resources.Load<GameObject>("Enemy1");
-        //enemy2 = Resources.Load<GameObject>("Enemy2");
         
         waves = new List<(GameObject, int, float)> { // enemy prefab, number to spawn, time it spawns
-            (enemy1, 10, 5),
-            (enemy2, 3, 5),
-            (enemy2,  5, 10)
+            (enemies[0], 5, 3),
+            (enemies[0], 10, 10),
+            (enemies[1], 3, 20),
+            (enemies[0], 10, 20),
+            (enemies[3], 5, 40),
+            (enemies[0], 10, 45),
+            (enemies[2], 1, 45),
+            (enemies[4], 1, 60),
+            (enemies[2], 10, 60)
         };
     }
     
