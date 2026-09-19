@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TowerSlot : MonoBehaviour
 {
@@ -6,9 +7,11 @@ public class TowerSlot : MonoBehaviour
     private int towerLevel = 1;
     public bool baby;
 
-    private void OnMouseDown()
+    private void OnMouseUpAsButton()
     {
-        // Pass 'this' slot and whether it currently has a tower
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            return;
+
         bool hasTower = currentTower != null;
         TowerMenuManager.Instance.OpenMenu(this, transform.position, hasTower);
     }
@@ -17,7 +20,6 @@ public class TowerSlot : MonoBehaviour
     {
         if (currentTower == null)
         {
-            // Spawn the tower at the slot's position
             currentTower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
             towerLevel = 1;
             if (baby)
@@ -35,7 +37,6 @@ public class TowerSlot : MonoBehaviour
         {
             towerLevel++;
             Debug.Log($"{gameObject.name}: Tower upgraded to Level {towerLevel}!");
-            // Add visual or stat scaling here
         }
     }
 }

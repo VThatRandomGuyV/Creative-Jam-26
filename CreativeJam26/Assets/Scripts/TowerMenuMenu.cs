@@ -1,74 +1,73 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class TowerMenuManager : MonoBehaviour
 {
     public static TowerMenuManager Instance { get; private set; }
 
-    [Header("UI Panels & Buttons")]
-    [SerializeField] private GameObject menuPanel;
+    [Header("UI")]
+    [SerializeField] private CanvasGroup menuGroup;
     [SerializeField] private GameObject buildButton;
     [SerializeField] private GameObject upgradeButton;
 
     [Header("Tower Settings")]
-    [SerializeField] private GameObject towerPrefab; // Drag your tower prefab here in the inspector
+    [SerializeField] private GameObject towerPrefab;
 
     private TowerSlot currentActiveSlot;
+    private Camera cam;
+    private int openedFrame = -1;
+
+    public bool IsOpen { get; private set; }
 
     void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+        Instance = this;
+        cam = Camera.main;
+        SetVisible(false);
+    }
 
-        menuPanel.SetActive(false);
+    void SetVisible(bool visible)
+    {
+        IsOpen = visible;
+        menuGroup.alpha = visible ? 1f : 0f;
+        menuGroup.interactable = visible;
+        menuGroup.blocksRaycasts = visible;
     }
 
     public void OpenMenu(TowerSlot slot, Vector3 worldPosition, bool hasTower)
     {
         currentActiveSlot = slot;
+        menuGroup.transform.position = cam.WorldToScreenPoint(worldPosition);
 
-        // Position the UI panel over the slot
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
-        menuPanel.transform.position = screenPosition;
+        buildButton.SetActive(!hasTower);
+        upgradeButton.SetActive(hasTower);
 
-        // Toggle button visibility based on the slot's state
-        if (hasTower)
-        {
-            buildButton.SetActive(false);
-            upgradeButton.SetActive(true);
-        }
-        else
-        {
-            buildButton.SetActive(true);
-            upgradeButton.SetActive(false);
-        }
-
-        menuPanel.SetActive(true);
+        openedFrame = Time.frameCount;
+        SetVisible(true);
     }
 
     public void CloseMenu()
     {
-        menuPanel.SetActive(false);
+        SetVisible(false);
         currentActiveSlot = null;
+        if (EventSystem.current != null)
+            EventSystem.current.SetSelectedGameObject(null);
     }
 
-    // Called by the Build Button OnClick event
+    private bool ClickTooSoon() => Time.frameCount <= openedFrame;
+
     public void OnBuildButtonPressed()
     {
-        if (currentActiveSlot != null && towerPrefab != null)
-        {
-            currentActiveSlot.BuildTower(towerPrefab);
-            CloseMenu();
-        }
+        if (ClickTooSoon() || currentActiveSlot == null || towerPrefab == null) return;
+        currentActiveSlot.BuildTower(towerPrefab);
+        CloseMenu();
     }
 
-    // Called by the Upgrade Button OnClick event
     public void OnUpgradeButtonPressed()
     {
-        if (currentActiveSlot != null)
-        {
-            currentActiveSlot.UpgradeTower();
-            CloseMenu();
-        }
+        if (ClickTooSoon() || currentActiveSlot == null) return;
+        currentActiveSlot.UpgradeTower();
+        CloseMenu();
     }
 }

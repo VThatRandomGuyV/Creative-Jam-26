@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5270012081283317730}
   - component: {fileID: 4807283925361329788}
   - component: {fileID: 3336902881171744867}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Armored Slow Roman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
