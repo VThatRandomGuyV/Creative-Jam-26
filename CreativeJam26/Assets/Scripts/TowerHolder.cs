@@ -27,12 +27,17 @@ public class TowerHolder : MonoBehaviour
     private void OnMouseDown() {
         towerMenu.SetActive(true);
         Debug.Log( this.transform.position);
-        towerMenu.transform.position = this.transform.position;
+        Vector3 menuOffset =new Vector3 (490,273,0);
+        towerMenu.transform.position = this.transform.position ;
+        
+        
+/*  
         if (tower == null) {
         Debug.Log(TowerManagement.main.GetSelectedTower().name);
         Tower towerToBuild = TowerManagement.main.GetSelectedTower();
         tower = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
         }
+  */
     }
     // Update is called once per frame
     void Update()
