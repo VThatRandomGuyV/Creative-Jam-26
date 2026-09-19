@@ -421,16 +421,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1080812210745070102, guid: 345d9ed01b7dcf0468dc2c0bdf7133e1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1061539494}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 345d9ed01b7dcf0468dc2c0bdf7133e1, type: 3}
---- !u!1 &1061539492 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1080812210745070102, guid: 345d9ed01b7dcf0468dc2c0bdf7133e1, type: 3}
-  m_PrefabInstance: {fileID: 1061539491}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1061539493 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7734365656057205798, guid: 345d9ed01b7dcf0468dc2c0bdf7133e1, type: 3}
@@ -442,21 +434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95368ba58017a7d4e9ef5a49270b75af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!114 &1061539494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1061539492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a1c97e6732dd9941932977214e814d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChoiceCard
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  clickButton: {fileID: 0}
 --- !u!1 &1370434328
 GameObject:
   m_ObjectHideFlags: 0
