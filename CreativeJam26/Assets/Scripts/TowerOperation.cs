@@ -58,9 +58,7 @@ public class TowerOperation : MonoBehaviour
     }
     private void FindTarget()
     {
-        Debug.Log("Find target");
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, range, (Vector2) transform.position, 0f, targetMask);
-        Debug.Log("GITS" + hits);
         if (hits.Length >0 )
         {
             target = hits[0].transform;
