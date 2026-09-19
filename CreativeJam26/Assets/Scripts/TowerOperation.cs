@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using Unity.VisualScripting;
 public class TowerOperation : MonoBehaviour
 {
     [Header("References")]
@@ -40,13 +41,16 @@ public class TowerOperation : MonoBehaviour
 
             if (timeUntilFire >= 1f / bps)
             {
+                timeUntilFire = 0;
                 Shoot();
             }
         }
     }
     private void Shoot()
     {
-        Debug.Log("Shoot");
+        GameObject projectileObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);        
+        Projectile projectileScript = projectileObj.GetComponent<Projectile>();
+        projectileScript.SetTarget(target);
     }
     private bool CheckTargetIsInRange()
     {
@@ -54,8 +58,9 @@ public class TowerOperation : MonoBehaviour
     }
     private void FindTarget()
     {
+        Debug.Log("Find target");
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, range, (Vector2) transform.position, 0f, targetMask);
-
+        Debug.Log("GITS" + hits);
         if (hits.Length >0 )
         {
             target = hits[0].transform;
