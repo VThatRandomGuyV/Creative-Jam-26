@@ -11,7 +11,9 @@ public class TowerManagement : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Tower[] towers;
-    private int selectedTower;
+    [SerializeField] int selectedTower; 
+    [SerializeField] TowerHolder selectedHolder;
+
     void Awake(){
         main = this;
     }
@@ -26,6 +28,23 @@ public class TowerManagement : MonoBehaviour
     {
         selectedTower = _selectedTower;
     }
+    public void setSelectedHolder(TowerHolder _selectedHolder)
+    {
+        selectedHolder = _selectedHolder;
+    }
+    public void BuildSelectedTower() {
+        Debug.Log("BBB");
+       selectedHolder.BuildTower();
+    }
+    public void DebugLog()
+    {
+        Debug.Log("CCCC");
+    }
+    
+        
+    
+
+
 
 
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,6 +11,7 @@ public class TowerHolder : MonoBehaviour
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Color hoverColor;
     [SerializeField] private GameObject towerMenu;
+    [SerializeField] private GameObject towerManager;
     private GameObject tower;
     private Color startColor;
 
@@ -26,10 +28,10 @@ public class TowerHolder : MonoBehaviour
     }
     private void OnMouseDown() {
         towerMenu.SetActive(true);
-        Debug.Log( this.transform.position);
+//        Debug.Log( this.transform.position);
         Vector3 menuOffset =new Vector3 (490,273,0);
         towerMenu.transform.position = this.transform.position ;
-        
+        TowerManagement.main.setSelectedHolder(this);     
         
 /*  
         if (tower == null) {
@@ -38,6 +40,12 @@ public class TowerHolder : MonoBehaviour
         tower = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
         }
   */
+    }
+    public void BuildTower()
+    {
+
+        Tower towerToBuild = TowerManagement.main.GetSelectedTower();
+        tower = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
     }
     // Update is called once per frame
     void Update()
