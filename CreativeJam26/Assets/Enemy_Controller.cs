@@ -97,7 +97,7 @@ public class Enemy_Controller : MonoBehaviour {
         health -= dmg;
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 0.1f);
         }
     }
 }

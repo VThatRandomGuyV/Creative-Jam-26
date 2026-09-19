@@ -1,47 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class TowerHolder : MonoBehaviour
+public class TowerSlot : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [Header("References")]
-    [SerializeField] private SpriteRenderer sr;
-    [SerializeField] private Color hoverColor;
-    //[SerializeField] private GameObject towerMenu;
-    [SerializeField] private Tower tower;
-    private Color startColor;
+    private GameObject currentTower = null;
+    private int towerLevel = 1;
 
-    private void Start(){
-        //towerMenu.SetActive(false);
-
-        startColor = sr.color;
-    }
-    private void OnMouseEnter(){
-        sr.color = hoverColor;
-    }
-    private void OnMouseExit(){
-        sr.color = startColor;
-    }
-
-    public void OnMouseDown()
+    private void OnMouseDown()
     {
-        
+        // Pass 'this' slot and whether it currently has a tower
+        bool hasTower = currentTower != null;
+        TowerMenuManager.Instance.OpenMenu(this, transform.position, hasTower);
     }
-    private void SpawnTower1() {
-            //towerMenu.SetActive(true);
-            //Debug.Log( this.transform.position);
-            //towerMenu.transform.position = this.transform.position;
-            //if (tower == null) {
-            //Debug.Log(TowerManagement.main.GetSelectedTower().name);
-            Tower towerToBuild = tower;
-            Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
+
+    public void BuildTower(GameObject towerPrefab)
+    {
+        if (currentTower == null)
+        {
+            // Spawn the tower at the slot's position
+            currentTower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
+            towerLevel = 1;
+            Debug.Log($"{gameObject.name}: Tower built!");
             this.gameObject.SetActive(false);
+        }
+    }
+
+    public void UpgradeTower()
+    {
+        if (currentTower != null)
+        {
+            towerLevel++;
+            Debug.Log($"{gameObject.name}: Tower upgraded to Level {towerLevel}!");
+            // Add visual or stat scaling here
+        }
     }
 }
-    // Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
