@@ -9,6 +9,7 @@ public class Enemy_Spawner : MonoBehaviour {
     private Queue<GameObject> enemySpawnQueue;
     private float timeSinceSpawn;
     private Active_Enemy_List_Manager AELM;
+    public Spline current_path;
 
     void Awake() {
         enemySpawnQueue = new Queue<GameObject>();
@@ -22,6 +23,7 @@ public class Enemy_Spawner : MonoBehaviour {
             if (enemySpawnQueue.Count == 0) return;
             timeSinceSpawn = 0;
             GameObject nextObject = enemySpawnQueue.Dequeue();
+            nextObject.GetComponent<Enemy_Controller>().spline = current_path;
             GameObject newObject = Instantiate(nextObject);
             AELM.AddEnemyToList(newObject);
         }

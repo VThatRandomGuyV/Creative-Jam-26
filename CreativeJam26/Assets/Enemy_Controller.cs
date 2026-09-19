@@ -19,11 +19,10 @@ public class Enemy_Controller : MonoBehaviour {
     
     private bool wobbleDirection;
     private float angleState;
-    private Spline spline;
+    public Spline spline;
     private Vector3 lastPosition;
 
     void Awake() {
-        spline = GameObject.Find("Spline").GetComponent<Spline>();
     }
     
     void Start() {
