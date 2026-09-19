@@ -1031,9 +1031,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wave_Manager
   enemySpawner: {fileID: 1801085674}
-  enemy1: {fileID: 1451485442180339657, guid: 5884f33c65c384b45b9844386eadf93d, type: 3}
-  enemy2: {fileID: 1451485442180339657, guid: 5884f33c65c384b45b9844386eadf93d, type: 3}
-  enemy3: {fileID: 0}
+  enemies:
+  - {fileID: 1451485442180339657, guid: 5884f33c65c384b45b9844386eadf93d, type: 3}
+  - {fileID: 1451485442180339657, guid: 37427ad1e3d2dfb4ca9ffb44f7e17c95, type: 3}
+  - {fileID: 900714476261225630, guid: 1c2a2c339cc8f55418e6c37c8e572a92, type: 3}
+  - {fileID: 900714476261225630, guid: 4170efc120710b7458bc877adc772289, type: 3}
+  - {fileID: 1451485442180339657, guid: c328a769929ca464bbb1f47a80f04f91, type: 3}
+  - {fileID: 1451485442180339657, guid: b2d5798b2faba8b47847691f34e884a3, type: 3}
+  - {fileID: 1451485442180339657, guid: 5582b1aaf0b507343b0b544d402e6534, type: 3}
 --- !u!114 &1801085677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1057,7 +1062,7 @@ Transform:
   m_GameObject: {fileID: 1801085674}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6976, y: -0.77433, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1108,9 +1113,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wave_Manager
   enemySpawner: {fileID: 2017765211}
-  enemy1: {fileID: 900714476261225630, guid: 1c2a2c339cc8f55418e6c37c8e572a92, type: 3}
-  enemy2: {fileID: 900714476261225630, guid: 1c2a2c339cc8f55418e6c37c8e572a92, type: 3}
-  enemy3: {fileID: 0}
+  enemies:
+  - {fileID: 1451485442180339657, guid: 09aabbf9cbd9043428ae68326b547217, type: 3}
+  - {fileID: 1451485442180339657, guid: 0a17fd4af7c384744b2b034fde667813, type: 3}
+  - {fileID: 900714476261225630, guid: db1aaab6280c05e49a5445bf415142bb, type: 3}
+  - {fileID: 900714476261225630, guid: 16f7cf9098756c64e847ec7b56930898, type: 3}
+  - {fileID: 1451485442180339657, guid: acb0dadcaf815224e82297a111c562e1, type: 3}
+  - {fileID: 1451485442180339657, guid: 9e1db7e6568d7634b9f229a50963bc60, type: 3}
+  - {fileID: 1451485442180339657, guid: ea98903ed5431cc428b4819ee969de6c, type: 3}
 --- !u!4 &2017765215
 Transform:
   m_ObjectHideFlags: 0
@@ -1120,7 +1130,7 @@ Transform:
   m_GameObject: {fileID: 2017765211}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6976, y: -0.77433, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
