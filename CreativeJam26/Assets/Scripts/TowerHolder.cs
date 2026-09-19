@@ -23,10 +23,11 @@ public class TowerHolder : MonoBehaviour
     }
     private void OnMouseDown() {
         Debug.Log("build tower gere");
-       // if (tower == null) return;
+        if (tower == null) {
         Debug.Log(TowerManagement.main.GetSelectedTower().name);
-        GameObject towerToBuild = TowerManagement.main.GetSelectedTower();
-        tower = Instantiate(towerToBuild, transform.position, Quaternion.identity);
+        Tower towerToBuild = TowerManagement.main.GetSelectedTower();
+        tower = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
+        }
     }
     // Update is called once per frame
     void Update()
