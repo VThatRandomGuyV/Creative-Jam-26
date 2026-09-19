@@ -5,7 +5,9 @@ public class Enemy_Controller : MonoBehaviour {
     
     public int health;
     public int speed;
+    public int gold;
     public float progress;
+    public float spawnFrequency;
     public bool isSpawner;
     public bool isTransport;
     
@@ -24,6 +26,10 @@ public class Enemy_Controller : MonoBehaviour {
     public Spline spline;
     private Vector3 lastPosition;
     private Vector3 offset;
+
+    public GameObject minion;
+    private Active_Enemy_List_Manager AELM;
+    private float timeSinceSpawn;
     
     void Start() {
         transform.position = spline.GetPositionOnSpline(0);
@@ -32,16 +38,38 @@ public class Enemy_Controller : MonoBehaviour {
         float x = Random.Range(-.2f, .2f);
         float y = Random.Range(-.2f, .2f);
         offset = new Vector3(x, y);
+        
+        // create minion objects when transport objects die or summoned from summoner
+        if (spline == GameObject.Find("SplinePast").GetComponent<Spline>()) {
+            minion.GetComponent<Enemy_Controller>().spline = GameObject.Find("SplinePast").GetComponent<Spline>();
+            minion.layer = 6;
+            AELM = GameObject.Find("EnemySpawner").GetComponent<Active_Enemy_List_Manager>();
+        }
+        else {
+            minion.GetComponent<Enemy_Controller>().spline = GameObject.Find("SplieFuture").GetComponent<Spline>();
+            minion.layer = 7;
+            AELM = GameObject.Find("Enemy_Spawner_Future").GetComponent<Active_Enemy_List_Manager>();
+        }
     }
     
     void Update() {
         progress += Time.deltaTime * (speed / 100f);
         transform.position = spline.GetPositionOnSpline(progress) + offset;
         
+        // spawn things if its a spawner
+        if (isSpawner) {
+            timeSinceSpawn += Time.deltaTime;
+            if (timeSinceSpawn > spawnFrequency) {
+                timeSinceSpawn = 0;
+                GameObject newObject = Instantiate(minion);
+                AELM.AddEnemyToList(newObject);
+                newObject.GetComponent<Enemy_Controller>().progress = progress;
+            }
+        }
+        
         // if at the end of path deplete health and disappear
         if (progress >= 1f) {
-            int x = 100;// REPLACE
-            x -= health;
+            Game_Stats.Instance.Health -= health;
             Destroy(gameObject, .1f);
         }
         
@@ -92,11 +120,25 @@ public class Enemy_Controller : MonoBehaviour {
         
         lastPosition = transform.position;
     }
-    public void TakeDamage(int dmg)
-    {
+    public void TakeDamage(int dmg) {
         health -= dmg;
-        if (health <= 0)
-        {
+        if (health <= 0) {
+            if (isTransport) {
+                for (int i = 0; i < 5; i++) {
+                    GameObject newObject = Instantiate(minion);
+                    AELM.AddEnemyToList(newObject);
+                    newObject.GetComponent<Enemy_Controller>().progress = progress;
+                }
+            }
+
+            if (spline == GameObject.Find("SplieFuture").GetComponent<Spline>()) {
+                Debug.Log("doing a thing");
+                Game_Stats.Instance.Gold2 += gold;
+            }
+            else {
+                Debug.Log("doing a thing2");
+                Game_Stats.Instance.Gold1 += gold;
+            }
             Destroy(gameObject, 0.1f);
         }
     }
