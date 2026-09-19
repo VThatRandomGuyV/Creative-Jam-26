@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   baby: 0
+  ruin: {fileID: 8270906770617855188, guid: f194fde2708dd054094805f82c2f7652, type: 3}
 --- !u!1 &8401923604997735978
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,3 +340,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   baby: 1
+  ruin: {fileID: 8270906770617855188, guid: f194fde2708dd054094805f82c2f7652, type: 3}

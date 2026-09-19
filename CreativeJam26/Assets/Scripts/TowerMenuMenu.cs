@@ -1,5 +1,6 @@
-using UnityEngine;
+    using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class TowerMenuManager : MonoBehaviour
 {
@@ -7,11 +8,11 @@ public class TowerMenuManager : MonoBehaviour
 
     [Header("UI Panels & Buttons")]
     [SerializeField] private GameObject menuPanel;
-    [SerializeField] private GameObject buildButton;
-    [SerializeField] private GameObject upgradeButton;
+    [SerializeField] private GameObject[] buildButtonList;
+   // [SerializeField] private GameObject upgradeButton;
 
     [Header("Tower Settings")]
-    [SerializeField] private GameObject towerPrefab; // Drag your tower prefab here in the inspector
+    [SerializeField] private GameObject[] towerPrefab; // Drag your tower prefab here in the inspector
 
     private TowerSlot currentActiveSlot;
 
@@ -34,13 +35,17 @@ public class TowerMenuManager : MonoBehaviour
         // Toggle button visibility based on the slot's state
         if (hasTower)
         {
-            buildButton.SetActive(false);
-            upgradeButton.SetActive(true);
+            for (int i = 0; i < buildButtonList.Length; i++){
+                buildButtonList[i].SetActive(false);
+            }
+    //        upgradeButton.SetActive(true);
         }
         else
         {
-            buildButton.SetActive(true);
-            upgradeButton.SetActive(false);
+        for (int i = 0; i < buildButtonList.Length; i++){
+            buildButtonList[i].SetActive(true);
+        }
+    //        upgradeButton.SetActive(false);
         }
 
         menuPanel.SetActive(true);
@@ -53,11 +58,11 @@ public class TowerMenuManager : MonoBehaviour
     }
 
     // Called by the Build Button OnClick event
-    public void OnBuildButtonPressed()
+    public void OnBuildButtonPressed(int quality)
     {
         if (currentActiveSlot != null && towerPrefab != null)
         {
-            currentActiveSlot.BuildTower(towerPrefab);
+            currentActiveSlot.BuildTower(towerPrefab[quality]);
             CloseMenu();
         }
     }

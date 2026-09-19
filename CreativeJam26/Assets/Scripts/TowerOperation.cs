@@ -13,6 +13,7 @@ public class TowerOperation : MonoBehaviour
     [Header("Attribute")]
     [SerializeField] private float range = 5f;
     [SerializeField] private float bps = 1f; //bullet per seconds
+    [SerializeField] public int quality = 0; 
 
     private Transform target;
     private float timeUntilFire;

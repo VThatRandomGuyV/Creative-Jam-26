@@ -5,7 +5,8 @@ public class TowerSlot : MonoBehaviour
     private GameObject currentTower = null;
     private int towerLevel = 1;
     public bool baby;
-
+    public GameObject ruin; 
+    
     private void OnMouseDown()
     {
         // Pass 'this' slot and whether it currently has a tower
@@ -23,6 +24,14 @@ public class TowerSlot : MonoBehaviour
             if (baby)
             {
                 currentTower.GetComponent<TowerOperation>().targetMask = 128;
+            }
+            else
+            {
+                if (currentTower.GetComponent<TowerOperation>().quality == 0)
+                {
+                   ruin = Instantiate(ruin, transform.position, Quaternion.identity);
+                   ruin.transform.position += new Vector3 (9,0,0); 
+                }
             }
             Debug.Log($"{gameObject.name}: Tower built!");
             this.gameObject.SetActive(false);
