@@ -14,6 +14,7 @@ public class Spline : MonoBehaviour
     
     public Vector3 GetPositionOnSpline(float progress) {
         Vector3 position = splineContainer.Spline.EvaluatePosition(progress);
-        return position;
+        Vector3 worldposition = splineContainer.transform.TransformPoint(position);
+        return worldposition;
     }
 }

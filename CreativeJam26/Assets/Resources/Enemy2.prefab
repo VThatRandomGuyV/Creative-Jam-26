@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 900714476261225630}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.96, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -137,3 +137,4 @@ MonoBehaviour:
   frontSprite: {fileID: -464643912875594161, guid: 5fa7c6519d9b4d54e9548d1b43497439, type: 3}
   backSprite: {fileID: 4933929149420576134, guid: 5e0ef108b807e9341838c8c9665adca4, type: 3}
   sideSprite: {fileID: 7746457967787036535, guid: dcc36c2cb4d46ce46af635bdf55f4960, type: 3}
+  spline: {fileID: 0}
