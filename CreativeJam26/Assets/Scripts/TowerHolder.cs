@@ -4,6 +4,7 @@ public class TowerSlot : MonoBehaviour
 {
     private GameObject currentTower = null;
     private int towerLevel = 1;
+    public bool baby;
 
     private void OnMouseDown()
     {
@@ -19,6 +20,10 @@ public class TowerSlot : MonoBehaviour
             // Spawn the tower at the slot's position
             currentTower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
             towerLevel = 1;
+            if (baby)
+            {
+                currentTower.GetComponent<TowerOperation>().targetMask = 128;
+            }
             Debug.Log($"{gameObject.name}: Tower built!");
             this.gameObject.SetActive(false);
         }

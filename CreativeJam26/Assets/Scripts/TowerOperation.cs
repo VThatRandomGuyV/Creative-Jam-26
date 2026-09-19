@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 public class TowerOperation : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] LayerMask targetMask;
+    [SerializeField] public LayerMask targetMask;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
 
