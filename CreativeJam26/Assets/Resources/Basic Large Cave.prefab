@@ -83,8 +83,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.21451467, g: 0.09019607, b: 1, a: 1}
+  m_Sprite: {fileID: 3271726158710004321, guid: 625765cd7f415254fa5e3a0daff18669, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -139,9 +139,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  frontSprite: {fileID: -464643912875594161, guid: 5fa7c6519d9b4d54e9548d1b43497439, type: 3}
-  backSprite: {fileID: 4933929149420576134, guid: 5e0ef108b807e9341838c8c9665adca4, type: 3}
-  sideSprite: {fileID: 7746457967787036535, guid: dcc36c2cb4d46ce46af635bdf55f4960, type: 3}
+  frontSprite: {fileID: 1817421176309166864, guid: bf00ca07850b7984789dd9edda751b6b, type: 3}
+  backSprite: {fileID: 6664452213188949926, guid: 55ff28e49fc59634ebd4c21dc0deb006, type: 3}
+  sideSprite: {fileID: 3271726158710004321, guid: 625765cd7f415254fa5e3a0daff18669, type: 3}
   spline: {fileID: 0}
   minion: {fileID: 1451485442180339657, guid: 5884f33c65c384b45b9844386eadf93d, type: 3}
 --- !u!61 &-5001456470848916775
@@ -182,7 +182,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.7, y: 0.35}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
