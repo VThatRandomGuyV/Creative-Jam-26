@@ -1072,7 +1072,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2017765215}
-  - component: {fileID: 2017765214}
+  - component: {fileID: 2017765216}
   - component: {fileID: 2017765213}
   - component: {fileID: 2017765212}
   m_Layer: 0
@@ -1111,20 +1111,6 @@ MonoBehaviour:
   enemy1: {fileID: 900714476261225630, guid: 1c2a2c339cc8f55418e6c37c8e572a92, type: 3}
   enemy2: {fileID: 900714476261225630, guid: 1c2a2c339cc8f55418e6c37c8e572a92, type: 3}
   enemy3: {fileID: 0}
---- !u!114 &2017765214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2017765211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 065ac6291de4a5749a27fd5a13fd3f79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Spawner_Future
-  spawnRate: 0.5
-  current_path: {fileID: 819871218}
 --- !u!4 &2017765215
 Transform:
   m_ObjectHideFlags: 0
@@ -1140,6 +1126,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2017765216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017765211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f5aa7af576017246a946f4f1f1a0499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Spawner
+  spawnRate: 0.5
+  current_path: {fileID: 819871218}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
