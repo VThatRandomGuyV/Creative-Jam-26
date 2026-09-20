@@ -46,8 +46,10 @@ public class TowerMenuManager : MonoBehaviour
     {
         currentActiveSlot = slot;
         Vector3 screenPos = cam.WorldToScreenPoint(worldPosition);
-        screenPos.x = Mathf.Clamp(screenPos.x, MinX, MaxX);
-        screenPos.y = Mathf.Clamp(screenPos.y, MinY, MaxY);
+        float sx = Screen.width / 1920f;
+        float sy = Screen.height / 1080f;
+        screenPos.x = Mathf.Clamp(screenPos.x, MinX * sx, MaxX * sx);
+        screenPos.y = Mathf.Clamp(screenPos.y, MinY * sy, MaxY * sy);
         menuGroup.transform.position = screenPos;
 
         for (int i = 0; i <  (buildButtons).Length; i++){
