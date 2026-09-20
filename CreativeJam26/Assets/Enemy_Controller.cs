@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 // SCOPE: controls enemy movement, reducing health at end, and any special behavior
 public class Enemy_Controller : MonoBehaviour {
@@ -41,6 +42,10 @@ public class Enemy_Controller : MonoBehaviour {
     private float randomSoundTimer;
     private bool isDying;
     private bool hasReachedEnd;
+    public Sprite bagSprite;
+    private float holdSprite;
+    private float dying;
+    private bool wobbleOff;
     
     void Start() {
         transform.position = spline.GetPositionOnSpline(0);
@@ -96,51 +101,66 @@ public class Enemy_Controller : MonoBehaviour {
         TickAudio();
         
         // control wobble
-        // move wobbleState between 0 and 1 (left and right)
-        if (wobbleDirection) angleState += Time.deltaTime * wobbleSpeed; 
-        else angleState -= Time.deltaTime * wobbleSpeed;
-        // if reach either end of the lerp, clamp and go other direction
-        if (angleState > 1f) {
-            angleState = 1f; 
-            wobbleDirection = false;
-        }
-        if (angleState < 0f) {
-            angleState = 0f; 
-            wobbleDirection = true;
-        }
-        // evaluate curve based on state and apply rotation
-        var angle = (wobbleLerp.Evaluate(angleState) -.5f) * wobbleAmount *2;
-        transform.eulerAngles = new Vector3(0, 0, angle);
-        
-        // control sprite by direction
-        Vector3 difference = transform.position - lastPosition;
-        // moving side to side
-        if (Mathf.Abs(difference.x) > Mathf.Abs(difference.y)){
-            GetComponent<SpriteRenderer>().sprite = sideSprite;
-            // moving right
-            if (difference.x >= 0) {
-                GetComponent<SpriteRenderer>().flipX = true;
+        if (!wobbleOff) {
+            // move wobbleState between 0 and 1 (left and right)
+            if (wobbleDirection) angleState += Time.deltaTime * wobbleSpeed; 
+            else angleState -= Time.deltaTime * wobbleSpeed;
+            // if reach either end of the lerp, clamp and go other direction
+            if (angleState > 1f) {
+                angleState = 1f; 
+                wobbleDirection = false;
             }
-            // moving left
+            if (angleState < 0f) {
+                angleState = 0f; 
+                wobbleDirection = true;
+            }
+            // evaluate curve based on state and apply rotation
+            var angle = (wobbleLerp.Evaluate(angleState) -.5f) * wobbleAmount *2;
+            transform.eulerAngles = new Vector3(0, 0, angle);   
+            
+            // control sprite by direction
+            Vector3 difference = transform.position - lastPosition;
+            // moving side to side
+            if (Mathf.Abs(difference.x) > Mathf.Abs(difference.y)){
+                GetComponent<SpriteRenderer>().sprite = sideSprite;
+                // moving right
+                if (difference.x >= 0) {
+                    GetComponent<SpriteRenderer>().flipX = true;
+                }
+                // moving left
+                else {
+                    GetComponent<SpriteRenderer>().flipX = false;
+                }
+            }
+            // moving front to backW
             else {
-                GetComponent<SpriteRenderer>().flipX = false;
-            }
-        }
-        // moving front to backW
-        else {
-            // moving front
-            if (difference.y <= 0) {
-                GetComponent<SpriteRenderer>().flipX = false;
-                GetComponent<SpriteRenderer>().sprite = frontSprite;
-            }
-            // moving back
-            else {
-                GetComponent<SpriteRenderer>().flipX = false;
-                GetComponent<SpriteRenderer>().sprite = backSprite;
+                // moving front
+                if (difference.y <= 0) {
+                    GetComponent<SpriteRenderer>().flipX = false;
+                    GetComponent<SpriteRenderer>().sprite = frontSprite;
+                }
+                // moving back
+                else {
+                    GetComponent<SpriteRenderer>().flipX = false;
+                    GetComponent<SpriteRenderer>().sprite = backSprite;
+                }
             }
         }
         
         lastPosition = transform.position;
+        
+        if (dying > 0) {
+            dying +=  Time.deltaTime;
+            transform.position = spline.GetPositionOnSpline(holdSprite);
+            if (dying >= 2) {
+                for (int i = 0; i < 5; i++) {
+                    GameObject newObject = Instantiate(minion);
+                    AELM.AddEnemyToList(newObject);
+                    newObject.GetComponent<Enemy_Controller>().progress = holdSprite;
+                }
+                DestroyImmediate(gameObject);
+            }
+        }
     }
 
     private void TickAudio() {
@@ -173,22 +193,20 @@ public class Enemy_Controller : MonoBehaviour {
             isDying = true;
             AudioManager.Play(AudioCue.EnemyDeath, soundOverrides);
             if (isTransport) {
-                for (int i = 0; i < 5; i++) {
-                    GameObject newObject = Instantiate(minion);
-                    AELM.AddEnemyToList(newObject);
-                    newObject.GetComponent<Enemy_Controller>().progress = progress;
-                }
+                holdSprite = progress;
+                GetComponent<SpriteRenderer>().sprite = bagSprite;
+                transform.localScale = new Vector3(0.06f, .06f, .06f);
+                wobbleOff = true;
+                dying = 1;
             }
 
             if (spline == GameObject.Find("SplieFuture").GetComponent<Spline>()) {
-                Debug.Log("doing a thing");
                 Game_Stats.Instance.Gold2 += gold;
             }
             else {
-                Debug.Log("doing a thing2");
                 Game_Stats.Instance.Gold1 += gold;
             }
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject, .1f);
         }
         else {
             AudioManager.Play(AudioCue.EnemyDamage, soundOverrides);
