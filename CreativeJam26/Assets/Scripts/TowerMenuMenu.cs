@@ -10,6 +10,7 @@ public class TowerMenuManager : MonoBehaviour
     [SerializeField] private CanvasGroup menuGroupPast;
 
     [SerializeField] private GameObject[] buildButtonsPast;
+    [SerializeField] private CanvasGroup RemoveButton;
 
     [SerializeField] private CanvasGroup menuGroupFuture;
     [SerializeField] private GameObject[] buildButtonsFuture;
@@ -40,6 +41,13 @@ public class TowerMenuManager : MonoBehaviour
         cam = Camera.main;
         SetVisible(false);
     }
+    void FixedUpdate()
+    {
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            CloseMenu();
+        }
+    }
 
     void SetVisible(bool visible)
     {
@@ -56,6 +64,7 @@ public class TowerMenuManager : MonoBehaviour
     public void OpenMenu(TowerSlot slot, Vector3 worldPosition, bool hasTower, bool isBaby)
     {
 
+        if (!hasTower) {
         currentActiveSlot = slot;
         Vector3 screenPos = cam.WorldToScreenPoint(worldPosition);
         float sx = Screen.width / 1920f;
@@ -101,6 +110,7 @@ public class TowerMenuManager : MonoBehaviour
 
         }
         Debug.Log($"Screen {Screen.width}x{Screen.height}, pos {screenPos}");
+        }
     }
 
     public void CloseMenu()
