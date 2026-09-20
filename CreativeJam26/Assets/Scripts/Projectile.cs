@@ -14,6 +14,9 @@ public class Projectile : MonoBehaviour
     private AudioCueEntry[] soundOverrides;
     private bool hasHit;
     private Vector3 lastPosition;
+    public bool slows;
+    public bool isAOE;
+    public GameObject aoeObject;
 
 
     public void SetTarget(Transform _target)
@@ -58,6 +61,14 @@ public class Projectile : MonoBehaviour
         AudioManager.Play(AudioCue.ProjectileImpact, soundOverrides);
         Enemy_Controller enemy = other.gameObject.GetComponent<Enemy_Controller>();
         if (enemy != null) enemy.TakeDamage(projectileDamage);
+        
+        if (slows) {
+            enemy.slowEnemy();
+        }
+        if (isAOE) {
+            GameObject newObject = Instantiate(aoeObject);
+            newObject.transform.position = enemy.transform.position;
+        }
         Destroy(gameObject);
     }
 }
