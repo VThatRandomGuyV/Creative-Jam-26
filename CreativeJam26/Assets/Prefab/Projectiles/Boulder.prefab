@@ -109,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   rb: {fileID: 589263071727152929}
   speed: 5
+  rotates: 1
   projectileDamage: 5
 --- !u!50 &589263071727152929
 Rigidbody2D:
