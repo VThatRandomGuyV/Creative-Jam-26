@@ -155,7 +155,7 @@ MonoBehaviour:
   sideSprite: {fileID: -3958433904252912850, guid: 366766900ae365e49b09a56dbcdfe437, type: 3}
   spline: {fileID: 0}
   minion: {fileID: 1451485442180339657, guid: b61e1ef38416989429ab98779aa1c40c, type: 3}
-  bagSprite: {fileID: -750881188152692431, guid: d1d6941bf122d4d4baa87b0cdbb6285e, type: 3}
+  bagSprite: {fileID: 0}
 --- !u!61 &-5049108574660959469
 BoxCollider2D:
   m_ObjectHideFlags: 0
