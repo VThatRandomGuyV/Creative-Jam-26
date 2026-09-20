@@ -5,7 +5,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("TimeLevelTest2");
+        SceneManager.LoadScene("LevelBase");
     }
 
     public void QuitGame()
