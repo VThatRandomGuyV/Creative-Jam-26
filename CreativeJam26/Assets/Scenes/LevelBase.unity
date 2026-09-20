@@ -12388,7 +12388,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1630609155}
   - component: {fileID: 1630609158}
-  - component: {fileID: 1630609157}
   - component: {fileID: 1630609156}
   m_Layer: 0
   m_Name: Bank_0 (1)
@@ -12458,19 +12457,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.9, y: 0.69}
   m_EdgeRadius: 0
---- !u!114 &1630609157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1630609154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03fa30e0cf55bd04a8cab469e7f354af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  bankBought: 0
 --- !u!212 &1630609158
 SpriteRenderer:
   serializedVersion: 3
