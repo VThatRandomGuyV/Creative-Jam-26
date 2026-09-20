@@ -12,9 +12,8 @@ public class TowerSlot : MonoBehaviour
     {
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
-
         bool hasTower = currentTower != null;
-        TowerMenuManager.Instance.OpenMenu(this, transform.position, hasTower);
+        TowerMenuManager.Instance.OpenMenu(this, transform.position, hasTower, baby);
     }
 
     public void BuildTower(GameObject towerPrefab)
