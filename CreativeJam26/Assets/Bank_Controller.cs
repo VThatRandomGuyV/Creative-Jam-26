@@ -33,6 +33,8 @@ public class Bank_Controller : MonoBehaviour {
 
     public void BuyBank() {
         bankBought = true;
+        Game_Stats.Instance.Gold1 -= 50;
+        Game_Stats.Instance.Gold2 -= 50;
         var vector32 = bankStuff2.transform.position;
         vector32.y = 2000;
         bankStuff2.transform.position = vector32;
