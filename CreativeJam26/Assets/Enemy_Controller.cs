@@ -157,6 +157,7 @@ public class Enemy_Controller : MonoBehaviour {
             else {
                 Game_Stats.Instance.Gold1 += gold;
             }
+            Destroy(gameObject, .1f);
         }
     }
 }
