@@ -11,6 +11,7 @@ public class Bank_Controller : MonoBehaviour {
     }
     
     public void OnMouseDown() {
+        Time.timeScale = 0f;
         if (!bankBought) {
             var vector32 = bankStuff2.transform.position;
             vector32.y = 540;
@@ -44,6 +45,7 @@ public class Bank_Controller : MonoBehaviour {
     }
 
     public void Exit() {
+        Time.timeScale = 1f;
             var vector3 = bankStuff.transform.position;
             vector3.y = 2000;
             bankStuff.transform.position = vector3;
