@@ -9,10 +9,16 @@ public class TowerMenuManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] private CanvasGroup menuGroup;
     [SerializeField] private GameObject[] buildButtons;
-    [SerializeField] private GameObject upgradeButton;
+    //[SerializeField] private GameObject upgradeButton;
 
     [Header("Tower Settings")]
     [SerializeField] private GameObject[] towerPrefabs;
+
+    // Screen-space limits (pixels) for the menu's pivot point. Tweak these.
+    private const float MinX = 600f;
+    private const float MaxX = 1320f;
+    private const float MinY = 400f;
+    private const float MaxY = 680f;
 
     private TowerSlot currentActiveSlot;
     private Camera cam;
@@ -39,14 +45,19 @@ public class TowerMenuManager : MonoBehaviour
     public void OpenMenu(TowerSlot slot, Vector3 worldPosition, bool hasTower)
     {
         currentActiveSlot = slot;
-        menuGroup.transform.position = cam.WorldToScreenPoint(worldPosition);
+        Vector3 screenPos = cam.WorldToScreenPoint(worldPosition);
+        screenPos.x = Mathf.Clamp(screenPos.x, MinX, MaxX);
+        screenPos.y = Mathf.Clamp(screenPos.y, MinY, MaxY);
+        menuGroup.transform.position = screenPos;
+
         for (int i = 0; i <  (buildButtons).Length; i++){
         buildButtons[i].SetActive(!hasTower);
         }
-        upgradeButton.SetActive(hasTower);
+        //upgradeButton.SetActive(hasTower);
 
         openedFrame = Time.frameCount;
         SetVisible(true);
+        Debug.Log($"Screen {Screen.width}x{Screen.height}, pos {screenPos}");
     }
 
     public void CloseMenu()
