@@ -19,8 +19,8 @@ public class TowerMenuManager : MonoBehaviour
 
     [Header("Tower Settings")]
     [SerializeField] public GameObject[] towerPrefabs;
+    [SerializeField] private int[] towerCosts; // same order/length as towerPrefabs
 
-    private GameObject[] buildButtons;
      // Screen-space limits (pixels) for the menu's pivot point. Tweak these.
     private const float MinX = 600f;
     private const float MaxX = 1320f;
@@ -115,12 +115,24 @@ public class TowerMenuManager : MonoBehaviour
 
     public void OnBuildButtonPressed(int _towerPrefab)
     {
-        int quality = _towerPrefab%3;
-        {
         if (ClickTooSoon() || currentActiveSlot == null || towerPrefabs[_towerPrefab] == null) return;
+
+        int cost = towerCosts[_towerPrefab];
+        var stats = Game_Stats.Instance;
+
+        if (currentActiveSlot.baby)
+        {
+            if (stats.Gold2 < cost) return;   // future = Gold2
+            stats.Gold2 -= cost;
+        }
+        else
+        {
+            if (stats.Gold1 < cost) return;   // past = Gold1
+            stats.Gold1 -= cost;
+        }
+
         currentActiveSlot.BuildTower(towerPrefabs[_towerPrefab]);
         CloseMenu();
-        }
     }
 
     public void OnUpgradeButtonPressed()
