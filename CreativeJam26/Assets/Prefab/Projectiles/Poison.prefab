@@ -110,6 +110,7 @@ MonoBehaviour:
   rb: {fileID: 589263071727152929}
   speed: 5
   projectileDamage: 1
+  rotates: 1
 --- !u!50 &589263071727152929
 Rigidbody2D:
   serializedVersion: 5

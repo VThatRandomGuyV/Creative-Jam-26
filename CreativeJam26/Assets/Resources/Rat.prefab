@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8388095960315953007}
   - component: {fileID: 5270012081283317730}
   - component: {fileID: 4807283925361329788}
-  - component: {fileID: -5049108574660959469}
+  - component: {fileID: 8704283090527259277}
   m_Layer: 7
-  m_Name: Spawner Roman
+  m_Name: Rat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -3958433904252912850, guid: 366766900ae365e49b09a56dbcdfe437, type: 3}
+  m_Sprite: {fileID: -6473108921819146014, guid: 1ac0e5d381f600e438d65fc69d78c1de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,11 +107,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   health: 1
-  speed: 10
+  speed: 5
   gold: 1
   progress: 0
   spawnFrequency: 0
-  isSpawner: 1
+  isSpawner: 0
   isTransport: 0
   walkingSoundInterval: 2.5
   randomSoundMinInterval: 4
@@ -143,13 +143,13 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  frontSprite: {fileID: -750881188152692431, guid: d1d6941bf122d4d4baa87b0cdbb6285e, type: 3}
-  backSprite: {fileID: 7697843748090952711, guid: 2183c3eccec8ca64eb286fd80bbcca08, type: 3}
-  sideSprite: {fileID: -3958433904252912850, guid: 366766900ae365e49b09a56dbcdfe437, type: 3}
+  frontSprite: {fileID: 8688114948410301998, guid: ac579a20f8edc5449a08551112cb86a5, type: 3}
+  backSprite: {fileID: -2148358260480465375, guid: c6245199434e714408673b2fec6485e8, type: 3}
+  sideSprite: {fileID: -6473108921819146014, guid: 1ac0e5d381f600e438d65fc69d78c1de, type: 3}
   spline: {fileID: 0}
-  minion: {fileID: 1451485442180339657, guid: b61e1ef38416989429ab98779aa1c40c, type: 3}
-  bagSprite: {fileID: -750881188152692431, guid: d1d6941bf122d4d4baa87b0cdbb6285e, type: 3}
---- !u!61 &-5049108574660959469
+  minion: {fileID: 1451485442180339657}
+  bagSprite: {fileID: 0}
+--- !u!61 &8704283090527259277
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,7 +187,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 25, y: 39.22}
+    oldSize: {x: 36.65, y: 20.710001}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
