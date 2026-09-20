@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
     private readonly float[] fadeStartLevels = new float[2];
     private readonly float[] fadeTargetLevels = new float[2];
     private AudioClip requestedMusic;
+    private float requestedTrackVolume = 1f;
     private float fadeElapsed;
     private bool musicIsFading;
     private float masterVolume;
@@ -130,7 +131,9 @@ public class AudioManager : MonoBehaviour
     private void SetupScene(Scene scene)
     {
         if (catalog == null || !scene.IsValid()) return;
-        PlayMusic(catalog.MusicForScene(scene.name));
+        SceneMusicEntry sceneMusic = catalog.FindMusicForScene(scene.name);
+        if (sceneMusic != null) PlayMusic(sceneMusic.clip, sceneMusic.volume);
+        else PlayMusic(catalog.defaultMusic, catalog.defaultMusicVolume);
         if (!catalog.autoWireSceneButtons) return;
 
         foreach (GameObject root in scene.GetRootGameObjects())
@@ -173,7 +176,7 @@ public class AudioManager : MonoBehaviour
 
         voice.source.Stop();
         voice.cue = cue;
-        voice.baseVolume = Mathf.Clamp01(entry.volume);
+        voice.baseVolume = Mathf.Clamp01(entry.volume) * (catalog != null ? catalog.EffectVolumeFor(clip) : 1f);
         voice.source.clip = clip;
         voice.source.pitch = Random.Range(Mathf.Max(0.1f, entry.minPitch), Mathf.Max(0.1f, entry.maxPitch));
         voice.source.volume = muted ? 0f : voice.baseVolume * masterVolume * effectsVolume;
@@ -222,8 +225,15 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip clip)
     {
-        if (requestedMusic == clip) return;
+        PlayMusic(clip, 1f);
+    }
+
+    public void PlayMusic(AudioClip clip, float trackVolume)
+    {
+        trackVolume = Mathf.Clamp01(trackVolume);
+        if (requestedMusic == clip && (clip == null || Mathf.Approximately(requestedTrackVolume, trackVolume))) return;
         requestedMusic = clip;
+        requestedTrackVolume = trackVolume;
 
         int incoming = -1;
         if (clip != null)
@@ -248,7 +258,7 @@ public class AudioManager : MonoBehaviour
         for (int i = 0; i < musicSources.Length; i++)
         {
             fadeStartLevels[i] = musicLevels[i];
-            fadeTargetLevels[i] = i == incoming ? 1f : 0f;
+            fadeTargetLevels[i] = i == incoming ? trackVolume : 0f;
         }
 
         if (catalog == null || catalog.musicFadeDuration <= 0f) AdvanceMusicFade(0f);

@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   health: 15
-  speed: 5
-  gold: 1
+  speed: 2
+  gold: 5
   progress: 0
   spawnFrequency: 0
   isSpawner: 0
