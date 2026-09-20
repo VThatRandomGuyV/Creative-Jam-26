@@ -110,8 +110,8 @@ MonoBehaviour:
     m_Bits: 64
   bulletPrefab: {fileID: 8300357504235132859, guid: 18d7f8ff43cbd8e45b628109c60cd241, type: 3}
   firingPoint: {fileID: 7538084455693043616}
-  range: 100
-  bps: 1
+  range: 3
+  bps: 3
   quality: 0
   soundOverrides:
   - cue: 3
