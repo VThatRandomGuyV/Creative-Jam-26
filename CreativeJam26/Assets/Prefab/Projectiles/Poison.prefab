@@ -89,7 +89,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.19, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -109,8 +109,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   rb: {fileID: 589263071727152929}
   speed: 5
-  rotates: 1
   projectileDamage: 3
+  rotates: 1
+  slows: 0
+  isAOE: 1
+  aoeObject: {fileID: 8300357504235132859, guid: 88aa889ba47d5fe4a9765e8d0fa1533d, type: 3}
 --- !u!50 &589263071727152929
 Rigidbody2D:
   serializedVersion: 5

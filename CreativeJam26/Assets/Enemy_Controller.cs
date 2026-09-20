@@ -46,8 +46,11 @@ public class Enemy_Controller : MonoBehaviour {
     private float holdSprite;
     private float dying;
     private bool wobbleOff;
+    private float slowTimer;
+    private float speedModifier;
     
     void Start() {
+        speedModifier = 1;
         transform.position = spline.GetPositionOnSpline(0);
         
         // create an offset from the spline so that enemies arent on top of each other
@@ -73,9 +76,19 @@ public class Enemy_Controller : MonoBehaviour {
     }
     
     void Update() {
+
+        if (slowTimer > 0) {
+            slowTimer += Time.deltaTime;
+            speedModifier = .5f;
+            if (slowTimer >= 4) {
+                slowTimer = 0;
+                speedModifier = 1;
+            }
+        }
+        
         if (isDying || hasReachedEnd) return;
 
-        progress += Time.deltaTime * (speed / 100f);
+        progress += Time.deltaTime * (speed / 100f * speedModifier);
         transform.position = spline.GetPositionOnSpline(progress) + offset;
         
         // spawn things if its a spawner
@@ -211,5 +224,9 @@ public class Enemy_Controller : MonoBehaviour {
         else {
             AudioManager.Play(AudioCue.EnemyDamage, soundOverrides);
         }
+    }
+
+    public void slowEnemy() {
+        slowTimer = 1;
     }
 }
