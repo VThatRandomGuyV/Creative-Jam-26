@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   health: 15
-  speed: 5
-  gold: 1
+  speed: 2
+  gold: 5
   progress: 0
   spawnFrequency: 0
   isSpawner: 0
@@ -170,6 +170,7 @@ MonoBehaviour:
   sideSprite: {fileID: 686335124472187929, guid: b2200e341d13a5249b9864cad1bf7cdd, type: 3}
   spline: {fileID: 0}
   minion: {fileID: 1451485442180339657, guid: 5884f33c65c384b45b9844386eadf93d, type: 3}
+  bagSprite: {fileID: 0}
 --- !u!61 &-2072115797456650227
 BoxCollider2D:
   m_ObjectHideFlags: 0

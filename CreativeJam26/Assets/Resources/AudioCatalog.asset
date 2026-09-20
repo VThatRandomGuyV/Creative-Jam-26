@@ -13,14 +13,76 @@ MonoBehaviour:
   m_Name: AudioCatalog
   m_EditorClassIdentifier: 
   defaultMusic: {fileID: 0}
+  defaultMusicVolume: 1
   sceneMusic:
   - sceneName: Main Menu
     clip: {fileID: 8300000, guid: 500709605478e4fffb32416d3fdb9c74, type: 3}
+    volume: 0.778
   - sceneName: LevelBase
     clip: {fileID: 8300000, guid: fce711a6f6ac04b9599270e791479e6b, type: 3}
+    volume: 1
   musicFadeDuration: 2
   effectVoiceCount: 16
   maxConcurrentEnemySounds: 6
+  soundEffectVolumes:
+  - clip: {fileID: 8300000, guid: 39e37e482428e4367aaddc70fd8d37e2, type: 3}
+    volume: 0.329
+  - clip: {fileID: 8300000, guid: 26442d9eb365a4750b2796108d6e8bbd, type: 3}
+    volume: 0.592
+  - clip: {fileID: 8300000, guid: 11d7e7bd5a0cd4307b049d1709636254, type: 3}
+    volume: 0.592
+  - clip: {fileID: 8300000, guid: b132075b3b15042e385b40bdd109690b, type: 3}
+    volume: 0.329
+  - clip: {fileID: 8300000, guid: 13dd6af3361a347bd82ca38dea55624f, type: 3}
+    volume: 0.319
+  - clip: {fileID: 8300000, guid: c1aace3c5ad024f39bbda237ce1b5d79, type: 3}
+    volume: 0.329
+  - clip: {fileID: 8300000, guid: dc829918e9cac4fc5a265f6f94d68fb2, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: abefeabf4c22a4aeb9efde551512aa63, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: efd0c3744bc2b4b78a712d6f90bde909, type: 3}
+    volume: 0.291
+  - clip: {fileID: 8300000, guid: c726c0c9447914b32b33d2a5a4d711fd, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 446d65dfe20a9458fba3bb2a17daa703, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 3eb33119a8b9e4d78b6c7d50684bcede, type: 3}
+    volume: 0.235
+  - clip: {fileID: 8300000, guid: ccbb74de396a140aa940a168c420cd44, type: 3}
+    volume: 0.263
+  - clip: {fileID: 8300000, guid: 0ac795f6cdbca495b8a4db66e4302f77, type: 3}
+    volume: 0.779
+  - clip: {fileID: 8300000, guid: 8d7c4d4106ca94b60944bc04524c1455, type: 3}
+    volume: 0.432
+  - clip: {fileID: 8300000, guid: b7d383bc87bca42ea895f840656756d4, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 17ad63693cf154ce79a59ef1ad8871c5, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 2b803938e22ad4b39b02ff7620c76e84, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 3549abc1878254d92b689cbab418e73b, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: b79a1a7a4647448e1a026f4b1089daa8, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 27666715595f548f9980b1a16101795f, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: f6fd2cbdf449c4d689650eb24c6ecf11, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: f17622cda12c4491b8811287fe143a78, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 71e4bde3361e546deaacbb5348d37bbf, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: e945ca447f3f64f75808a6e03963a42b, type: 3}
+    volume: 0.545
+  - clip: {fileID: 8300000, guid: 4c39ebd4452b04d57b46c91f3b72773c, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 0979c4cd9b8514f77bd7101e58877a0e, type: 3}
+    volume: 0.376
+  - clip: {fileID: 8300000, guid: 3346b24483384489bafebf8f2395d767, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: b00f617a98565496e9f769e65519a514, type: 3}
+    volume: 1
   effects:
   - cue: 0
     clips:
@@ -103,7 +165,7 @@ MonoBehaviour:
   - cue: 11
     clips:
     - {fileID: 8300000, guid: 0979c4cd9b8514f77bd7101e58877a0e, type: 3}
-    volume: 0.573
+    volume: 0.285
     minPitch: 1
     maxPitch: 1
     cooldown: 0

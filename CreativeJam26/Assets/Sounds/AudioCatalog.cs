@@ -63,16 +63,30 @@ public class SceneMusicEntry
 {
     public string sceneName;
     public AudioClip clip;
+    [Range(0f, 1f), Tooltip("Multiplied by the master and music volume settings.")]
+    public float volume = 1f;
+}
+
+[Serializable]
+public class SoundEffectVolumeEntry
+{
+    public AudioClip clip;
+    [Range(0f, 1f), Tooltip("Applied to this file everywhere it is used, including prefab overrides.")]
+    public float volume = 1f;
 }
 
 [CreateAssetMenu(fileName = "AudioCatalog", menuName = "Audio/Audio Catalog")]
 public class AudioCatalog : ScriptableObject
 {
     public AudioClip defaultMusic;
+    [Range(0f, 1f), Tooltip("Used when no scene music entry matches. Multiplied by the master and music volume settings.")]
+    public float defaultMusicVolume = 1f;
     public List<SceneMusicEntry> sceneMusic = new List<SceneMusicEntry>();
     [Min(0f)] public float musicFadeDuration = 1f;
     [Min(1)] public int effectVoiceCount = 16;
     [Min(0)] public int maxConcurrentEnemySounds = 6;
+    [Header("Sound Effect File Volumes")]
+    public List<SoundEffectVolumeEntry> soundEffectVolumes = new List<SoundEffectVolumeEntry>();
     public List<AudioCueEntry> effects = new List<AudioCueEntry>();
     public bool autoWireSceneButtons = true;
 
@@ -84,11 +98,25 @@ public class AudioCatalog : ScriptableObject
         return null;
     }
 
-    public AudioClip MusicForScene(string sceneName)
+    public float EffectVolumeFor(AudioClip clip)
+    {
+        if (clip == null || soundEffectVolumes == null) return 1f;
+        foreach (SoundEffectVolumeEntry entry in soundEffectVolumes)
+            if (entry != null && entry.clip == clip) return Mathf.Clamp01(entry.volume);
+        return 1f;
+    }
+
+    public SceneMusicEntry FindMusicForScene(string sceneName)
     {
         if (sceneMusic != null)
             foreach (SceneMusicEntry entry in sceneMusic)
-                if (entry != null && entry.sceneName == sceneName) return entry.clip;
-        return defaultMusic;
+                if (entry != null && entry.sceneName == sceneName) return entry;
+        return null;
+    }
+
+    public AudioClip MusicForScene(string sceneName)
+    {
+        SceneMusicEntry entry = FindMusicForScene(sceneName);
+        return entry != null ? entry.clip : defaultMusic;
     }
 }

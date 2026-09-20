@@ -17,7 +17,7 @@ public class Wave_Manager : MonoBehaviour {
         spawner = enemySpawner.GetComponent<Enemy_Spawner>();
         
         waves = new List<(GameObject, int, float)> { // enemy prefab, number to spawn, time it spawns
-            (enemies[0], 10, 0),
+            (enemies[0], 5, 6),
             (enemies[0], 8, 20),
             (enemies[1], 4, 40),
             (enemies[0], 6, 55),
