@@ -31,14 +31,15 @@ public class Wave_Manager : MonoBehaviour {
     void Update() {
         gameTime += Time.deltaTime;
 
-        if (waves.Count > 0) {
-            if (gameTime > waves[0].Item3) {
-                (GameObject, int, float) nextEnemyGroup = waves[0];
-                waves.RemoveAt(0);
-                for (int i = 0; i < nextEnemyGroup.Item2; i++) {
-                    spawner.AddToQueue(nextEnemyGroup.Item1);
-                }
+        bool startedWave = false;
+        while (waves.Count > 0 && gameTime > waves[0].Item3) {
+            (GameObject, int, float) nextEnemyGroup = waves[0];
+            waves.RemoveAt(0);
+            startedWave = true;
+            for (int i = 0; i < nextEnemyGroup.Item2; i++) {
+                spawner.AddToQueue(nextEnemyGroup.Item1);
             }
         }
+        if (startedWave) AudioManager.Play(AudioCue.WaveStart);
     }
 }

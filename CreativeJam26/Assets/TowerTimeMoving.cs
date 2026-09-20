@@ -16,8 +16,10 @@ public class TowerTimeMoving : MonoBehaviour
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             pos.z = 0f;
-            Instantiate(towerPrefab, pos, Quaternion.identity);
+            GameObject tower = Instantiate(towerPrefab, pos, Quaternion.identity);
             GameObject future_tower = Instantiate(towerPrefab, pos + new Vector3(Camera.main.orthographicSize * Camera.main.aspect, 0, 0), Quaternion.identity);
+            TowerOperation operation = tower.GetComponent<TowerOperation>();
+            if (operation != null) operation.PlaySound(AudioCue.TowerBuild);
 
             if(future_tower.transform.position.y < 1)
             {
