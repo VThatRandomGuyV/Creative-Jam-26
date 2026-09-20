@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 1e30aede038d5e645bef181145ba1c47
   - enabled: 1
+    path: Assets/Scenes/LevelBase.unity
+    guid: fb382bc115f385347a223148eb5a1e42
+  - enabled: 0
     path: Assets/Scenes/TimeLevelTest2.unity
     guid: e219c4e6e0cb4b54da25f0bb4aae91c9
   m_configObjects:
