@@ -111,7 +111,7 @@ MonoBehaviour:
   gold: 1
   progress: 0
   spawnFrequency: 0
-  isSpawner: 0
+  isSpawner: 1
   isTransport: 0
   wobbleAmount: 10
   wobbleSpeed: 2
@@ -144,6 +144,7 @@ MonoBehaviour:
   sideSprite: {fileID: 7746457967787036535, guid: dcc36c2cb4d46ce46af635bdf55f4960, type: 3}
   spline: {fileID: 0}
   minion: {fileID: 1451485442180339657, guid: 09aabbf9cbd9043428ae68326b547217, type: 3}
+  bagSprite: {fileID: 0}
 --- !u!61 &-5049108574660959469
 BoxCollider2D:
   m_ObjectHideFlags: 0
