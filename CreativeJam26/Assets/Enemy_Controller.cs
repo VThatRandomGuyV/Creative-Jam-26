@@ -11,6 +11,13 @@ public class Enemy_Controller : MonoBehaviour {
     public float spawnFrequency;
     public bool isSpawner;
     public bool isTransport;
+
+    [Header("Audio")]
+    [SerializeField, Min(0.1f)] private float walkingSoundInterval = 2.5f;
+    [SerializeField, Min(0.1f)] private float randomSoundMinInterval = 4f;
+    [SerializeField, Min(0.1f)] private float randomSoundMaxInterval = 9f;
+    [Tooltip("Optional sounds for this enemy prefab. Unassigned cues use AudioCatalog defaults.")]
+    [SerializeField] private AudioCueEntry[] soundOverrides;
     
     [Header("Wobble Sprite")]
     public float wobbleAmount;
@@ -31,6 +38,10 @@ public class Enemy_Controller : MonoBehaviour {
     public GameObject minion;
     private Active_Enemy_List_Manager AELM;
     private float timeSinceSpawn;
+    private float walkingSoundTimer;
+    private float randomSoundTimer;
+    private bool isDying;
+    private bool hasReachedEnd;
     public Sprite bagSprite;
     private float holdSprite;
     private float dying;
@@ -43,6 +54,10 @@ public class Enemy_Controller : MonoBehaviour {
         float x = Random.Range(-.2f, .2f);
         float y = Random.Range(-.2f, .2f);
         offset = new Vector3(x, y);
+
+        walkingSoundTimer = Random.Range(0f, Mathf.Max(0.1f, walkingSoundInterval));
+        randomSoundTimer = NextRandomSoundDelay();
+        AudioManager.Play(AudioCue.EnemySpawn, soundOverrides);
         
         // create minion objects when transport objects die or summoned from summoner
         if (spline == GameObject.Find("SplinePast").GetComponent<Spline>()) {
@@ -58,6 +73,8 @@ public class Enemy_Controller : MonoBehaviour {
     }
     
     void Update() {
+        if (isDying || hasReachedEnd) return;
+
         progress += Time.deltaTime * (speed / 100f);
         transform.position = spline.GetPositionOnSpline(progress) + offset;
         
@@ -74,9 +91,14 @@ public class Enemy_Controller : MonoBehaviour {
         
         // if at the end of path deplete health and disappear
         if (progress >= 1f) {
+            hasReachedEnd = true;
             Game_Stats.Instance.Health -= health;
+            AudioManager.Play(AudioCue.BaseDamage);
             Destroy(gameObject, .1f);
+            return;
         }
+
+        TickAudio();
         
         // control wobble
         if (!wobbleOff) {
@@ -140,9 +162,36 @@ public class Enemy_Controller : MonoBehaviour {
             }
         }
     }
+
+    private void TickAudio() {
+        if (Time.deltaTime <= 0f) return;
+
+        if (speed > 0) {
+            walkingSoundTimer -= Time.deltaTime;
+            if (walkingSoundTimer <= 0f) {
+                walkingSoundTimer = Mathf.Max(0.1f, walkingSoundInterval);
+                AudioManager.Play(AudioCue.EnemyWalk, soundOverrides);
+            }
+        }
+
+        randomSoundTimer -= Time.deltaTime;
+        if (randomSoundTimer <= 0f) {
+            randomSoundTimer = NextRandomSoundDelay();
+            AudioManager.Play(AudioCue.EnemyRandom, soundOverrides);
+        }
+    }
+
+    private float NextRandomSoundDelay() {
+        float minimum = Mathf.Max(0.1f, randomSoundMinInterval);
+        return Random.Range(minimum, Mathf.Max(minimum, randomSoundMaxInterval));
+    }
+
     public void TakeDamage(int dmg) {
+        if (isDying || hasReachedEnd || dmg <= 0) return;
         health -= dmg;
         if (health <= 0) {
+            isDying = true;
+            AudioManager.Play(AudioCue.EnemyDeath, soundOverrides);
             if (isTransport) {
                 holdSprite = progress;
                 GetComponent<SpriteRenderer>().sprite = bagSprite;
@@ -158,6 +207,9 @@ public class Enemy_Controller : MonoBehaviour {
                 Game_Stats.Instance.Gold1 += gold;
             }
             Destroy(gameObject, .1f);
+        }
+        else {
+            AudioManager.Play(AudioCue.EnemyDamage, soundOverrides);
         }
     }
 }

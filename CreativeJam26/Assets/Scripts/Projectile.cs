@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Hierarchy.Editor;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -15,16 +11,22 @@ public class Projectile : MonoBehaviour
 
     public bool rotates;
     private Transform target;
-<<<<<<< Updated upstream
-=======
     private AudioCueEntry[] soundOverrides;
     private bool hasHit;
     private Vector3 lastPosition;
->>>>>>> Stashed changes
+
+    private AudioCueEntry[] soundOverrides;
+    private bool hasHit;
+
 
     public void SetTarget(Transform _target)
     {
         target = _target; 
+    }
+
+    public void SetSoundOverrides(AudioCueEntry[] overrides)
+    {
+        soundOverrides = overrides;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,7 +56,11 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        other.gameObject.GetComponent<Enemy_Controller>().TakeDamage(projectileDamage);
+        if (hasHit) return;
+        hasHit = true;
+        AudioManager.Play(AudioCue.ProjectileImpact, soundOverrides);
+        Enemy_Controller enemy = other.gameObject.GetComponent<Enemy_Controller>();
+        if (enemy != null) enemy.TakeDamage(projectileDamage);
         Destroy(gameObject);
     }
 }

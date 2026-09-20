@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,9 +11,8 @@ public class TowerSlot : MonoBehaviour
     {
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
-
         bool hasTower = currentTower != null;
-        TowerMenuManager.Instance.OpenMenu(this, transform.position, hasTower);
+        TowerMenuManager.Instance.OpenMenu(this, transform.position, hasTower, baby);
     }
 
     public void BuildTower(GameObject towerPrefab)
@@ -45,6 +43,7 @@ public class TowerSlot : MonoBehaviour
  
             }
             Debug.Log($"{gameObject.name}: Tower built!");
+            currentTower.GetComponent<TowerOperation>().PlaySound(AudioCue.TowerBuild);
             this.gameObject.SetActive(false);
         }
     }
@@ -54,6 +53,7 @@ public class TowerSlot : MonoBehaviour
         if (currentTower != null)
         {
             towerLevel++;
+            currentTower.GetComponent<TowerOperation>().PlaySound(AudioCue.TowerUpgrade);
             Debug.Log($"{gameObject.name}: Tower upgraded to Level {towerLevel}!");
         }
     }

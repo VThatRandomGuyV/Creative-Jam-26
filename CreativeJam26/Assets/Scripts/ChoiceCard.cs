@@ -21,7 +21,7 @@ public class ChoiceCard : MonoBehaviour
         myValue = data.choiceValue;
 
         // Clean up old listeners just in case, then add the click action
-        clickButton.onClick.RemoveAllListeners();
+        clickButton.onClick.RemoveListener(SelectThisCard);
         clickButton.onClick.AddListener(SelectThisCard);
     }
 

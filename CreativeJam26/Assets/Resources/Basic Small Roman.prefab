@@ -113,6 +113,17 @@ MonoBehaviour:
   spawnFrequency: 0
   isSpawner: 0
   isTransport: 0
+  walkingSoundInterval: 2.5
+  randomSoundMinInterval: 4
+  randomSoundMaxInterval: 9
+  soundOverrides:
+  - cue: 8
+    clips:
+    - {fileID: 8300000, guid: 26442d9eb365a4750b2796108d6e8bbd, type: 3}
+    volume: 0.577
+    minPitch: 0.95
+    maxPitch: 1.05
+    cooldown: 0
   wobbleAmount: 10
   wobbleSpeed: 2
   wobbleLerp:
