@@ -15,9 +15,6 @@ public class Projectile : MonoBehaviour
     private bool hasHit;
     private Vector3 lastPosition;
 
-    private AudioCueEntry[] soundOverrides;
-    private bool hasHit;
-
 
     public void SetTarget(Transform _target)
     {
