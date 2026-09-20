@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class TowerSlot : MonoBehaviour
@@ -14,10 +15,11 @@ public class TowerSlot : MonoBehaviour
         TowerMenuManager.Instance.OpenMenu(this, transform.position, hasTower);
     }
 
-    public void BuildTower(GameObject towerPrefab)
+    public async Task BuildTower(GameObject towerPrefab)
     {
         if (currentTower == null)
         {
+            
             // Spawn the tower at the slot's position
             currentTower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
             towerLevel = 1;
@@ -31,6 +33,13 @@ public class TowerSlot : MonoBehaviour
                 {
                    ruin = Instantiate(ruin, transform.position, Quaternion.identity);
                    ruin.transform.position += new Vector3 (9,0,0); 
+                }
+                else if (currentTower.GetComponent<TowerOperation>().quality == 2)
+                {
+
+                    Vector3 twinOffset = new Vector3(8,0,0) ;
+                    GameObject oldTower = Instantiate(towerPrefab, transform.position + twinOffset, Quaternion.identity);
+                    oldTower.GetComponent<TowerOperation>().targetMask = 128;
                 }
             }
             Debug.Log($"{gameObject.name}: Tower built!");
