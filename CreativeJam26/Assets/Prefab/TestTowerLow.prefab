@@ -108,7 +108,7 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 64
-  bulletPrefab: {fileID: 8300357504235132859, guid: 7292ab2d7968d424bb7db9a5c054507a, type: 3}
+  bulletPrefab: {fileID: 8300357504235132859, guid: 8a0a227db041e8546ac4ae49a4c6f6d3, type: 3}
   firingPoint: {fileID: 7538084455693043616}
   range: 100
   bps: 1
