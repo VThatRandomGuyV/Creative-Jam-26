@@ -108,10 +108,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   health: 20
   speed: 5
-  gold: 1
+  gold: 6
   progress: 0
   spawnFrequency: 0
   isSpawner: 0
+  isTransport: 1
   walkingSoundInterval: 2.5
   randomSoundMinInterval: 4
   randomSoundMaxInterval: 9
@@ -123,7 +124,6 @@ MonoBehaviour:
     minPitch: 0.95
     maxPitch: 1.05
     cooldown: 0
-  isTransport: 1
   wobbleAmount: 10
   wobbleSpeed: 2
   wobbleLerp:
