@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
-using Unity.VisualScripting;
 public class TowerOperation : MonoBehaviour
 {
     [Header("References")]
@@ -14,6 +10,10 @@ public class TowerOperation : MonoBehaviour
     [SerializeField] private float range = 5f;
     [SerializeField] private float bps = 1f; //bullet per seconds
     [SerializeField] public int quality; //bullet per seconds
+
+    [Header("Audio")]
+    [Tooltip("Optional sounds for this tower prefab. Unassigned cues use AudioCatalog defaults.")]
+    [SerializeField] private AudioCueEntry[] soundOverrides;
 
 
     private Transform target;
@@ -53,6 +53,13 @@ public class TowerOperation : MonoBehaviour
         GameObject projectileObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);        
         Projectile projectileScript = projectileObj.GetComponent<Projectile>();
         projectileScript.SetTarget(target);
+        projectileScript.SetSoundOverrides(soundOverrides);
+        PlaySound(AudioCue.TowerFire);
+    }
+
+    public void PlaySound(AudioCue cue)
+    {
+        AudioManager.Play(cue, soundOverrides);
     }
     private bool CheckTargetIsInRange()
     {

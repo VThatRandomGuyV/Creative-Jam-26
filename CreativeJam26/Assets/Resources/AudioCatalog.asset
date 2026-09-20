@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3828eb67a6cf42aba63ef42fe4181f9c, type: 3}
+  m_Name: AudioCatalog
+  m_EditorClassIdentifier: 
+  defaultMusic: {fileID: 0}
+  sceneMusic:
+  - sceneName: Main Menu
+    clip: {fileID: 8300000, guid: 500709605478e4fffb32416d3fdb9c74, type: 3}
+  - sceneName: LevelBase
+    clip: {fileID: 8300000, guid: fce711a6f6ac04b9599270e791479e6b, type: 3}
+  musicFadeDuration: 2
+  effectVoiceCount: 16
+  maxConcurrentEnemySounds: 6
+  effects:
+  - cue: 0
+    clips:
+    - {fileID: 8300000, guid: abefeabf4c22a4aeb9efde551512aa63, type: 3}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    cooldown: 0
+  - cue: 1
+    clips:
+    - {fileID: 8300000, guid: c726c0c9447914b32b33d2a5a4d711fd, type: 3}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    cooldown: 0
+  - cue: 2
+    clips:
+    - {fileID: 8300000, guid: c726c0c9447914b32b33d2a5a4d711fd, type: 3}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    cooldown: 0
+  - cue: 3
+    clips:
+    - {fileID: 8300000, guid: c1aace3c5ad024f39bbda237ce1b5d79, type: 3}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    cooldown: 0
+  - cue: 4
+    clips:
+    - {fileID: 8300000, guid: b00f617a98565496e9f769e65519a514, type: 3}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    cooldown: 0.25
+  - cue: 5
+    clips:
+    - {fileID: 8300000, guid: 13dd6af3361a347bd82ca38dea55624f, type: 3}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    cooldown: 0
+  - cue: 6
+    clips:
+    - {fileID: 8300000, guid: 11d7e7bd5a0cd4307b049d1709636254, type: 3}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    cooldown: 0
+  - cue: 7
+    clips:
+    - {fileID: 8300000, guid: 8d7c4d4106ca94b60944bc04524c1455, type: 3}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    cooldown: 0
+  - cue: 8
+    clips:
+    - {fileID: 0}
+    - {fileID: 0}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    cooldown: 0
+  - cue: 9
+    clips:
+    - {fileID: 8300000, guid: 0979c4cd9b8514f77bd7101e58877a0e, type: 3}
+    volume: 0.611
+    minPitch: 1
+    maxPitch: 1
+    cooldown: 0
+  - cue: 10
+    clips:
+    - {fileID: 8300000, guid: 11d7e7bd5a0cd4307b049d1709636254, type: 3}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    cooldown: 0
+  - cue: 11
+    clips:
+    - {fileID: 8300000, guid: 0979c4cd9b8514f77bd7101e58877a0e, type: 3}
+    volume: 0.573
+    minPitch: 1
+    maxPitch: 1
+    cooldown: 0
+  - cue: 12
+    clips:
+    - {fileID: 8300000, guid: abefeabf4c22a4aeb9efde551512aa63, type: 3}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    cooldown: 0
+  - cue: 13
+    clips:
+    - {fileID: 8300000, guid: 3346b24483384489bafebf8f2395d767, type: 3}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    cooldown: 0
+  - cue: 14
+    clips:
+    - {fileID: 8300000, guid: b00f617a98565496e9f769e65519a514, type: 3}
+    volume: 1
+    minPitch: 1
+    maxPitch: 1
+    cooldown: 0
+  autoWireSceneButtons: 1
