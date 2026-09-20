@@ -4345,9 +4345,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8ed93eb0abac04283a806fc398d99c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game_Stats
-  Health: 0
-  Gold1: 0
-  Gold2: 0
+  Health: 100
+  Gold1: 100
+  Gold2: 100
   Gold3: 0
   gold1Text: {fileID: 1350035110}
   gold2Text: {fileID: 412703969}
@@ -14310,6 +14310,7 @@ MonoBehaviour:
   - {fileID: 477995317759158382, guid: 7822bce4e117626428a7f14dfeb379f3, type: 3}
   - {fileID: 477995317759158382, guid: f240a560d91c82d4a9e5981e2926de11, type: 3}
   - {fileID: 477995317759158382, guid: d923204b95e2d4c4d9280fb35d19ff48, type: 3}
+  towerCosts: 0a0000000a0000000a000000i
 --- !u!114 &1783722089
 MonoBehaviour:
   m_ObjectHideFlags: 0

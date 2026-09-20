@@ -6,9 +6,9 @@ public class Game_Stats : MonoBehaviour
     public static Game_Stats Instance { get; private set; }
 
     [Header("Player Stats")]
-    public int Health;
-    public int Gold1;
-    public int Gold2;
+    public int Health = 100;
+    public int Gold1 = 100;
+    public int Gold2 = 100;
     public int Gold3;
 
     [Header("UI Text References")]
