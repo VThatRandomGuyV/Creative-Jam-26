@@ -113,3 +113,11 @@ MonoBehaviour:
   range: 100
   bps: 1
   quality: 0
+  soundOverrides:
+  - cue: 3
+    clips:
+    - {fileID: 8300000, guid: f6fd2cbdf449c4d689650eb24c6ecf11, type: 3}
+    volume: 0.251
+    minPitch: 0
+    maxPitch: 0
+    cooldown: 0
