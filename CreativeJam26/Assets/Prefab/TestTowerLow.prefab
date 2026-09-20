@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -4338705880661746578, guid: 1f291631f81fd8f4f9fd687d35dc0a47, type: 3}
+  m_Sprite: {fileID: 4923666289715707138, guid: 1f291631f81fd8f4f9fd687d35dc0a47, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -113,3 +113,11 @@ MonoBehaviour:
   range: 100
   bps: 1
   quality: 0
+  soundOverrides:
+  - cue: 3
+    clips:
+    - {fileID: 8300000, guid: 446d65dfe20a9458fba3bb2a17daa703, type: 3}
+    volume: 0.8
+    minPitch: 0.95
+    maxPitch: 1.05
+    cooldown: 0

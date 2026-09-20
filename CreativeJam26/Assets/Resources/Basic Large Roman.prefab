@@ -83,8 +83,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.09238758, g: 0, b: 0.6698113, a: 1}
+  m_Sprite: {fileID: -7232910185076945322, guid: cb60bafb03ec4de4ab622ca295fca762, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -113,6 +113,17 @@ MonoBehaviour:
   spawnFrequency: 0
   isSpawner: 0
   isTransport: 0
+  walkingSoundInterval: 2.5
+  randomSoundMinInterval: 4
+  randomSoundMaxInterval: 9
+  soundOverrides:
+  - cue: 8
+    clips:
+    - {fileID: 8300000, guid: b79a1a7a4647448e1a026f4b1089daa8, type: 3}
+    volume: 0.75
+    minPitch: 0.95
+    maxPitch: 1.05
+    cooldown: 0
   wobbleAmount: 10
   wobbleSpeed: 2
   wobbleLerp:
@@ -139,11 +150,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  frontSprite: {fileID: -464643912875594161, guid: 5fa7c6519d9b4d54e9548d1b43497439, type: 3}
-  backSprite: {fileID: 4933929149420576134, guid: 5e0ef108b807e9341838c8c9665adca4, type: 3}
-  sideSprite: {fileID: 7746457967787036535, guid: dcc36c2cb4d46ce46af635bdf55f4960, type: 3}
+  frontSprite: {fileID: 8941661698142046675, guid: f8ade9bf30327ef4587603a14ece6c83, type: 3}
+  backSprite: {fileID: 7943642699675505095, guid: 78e48a737f4ef4a4b808d0ca9fe2b143, type: 3}
+  sideSprite: {fileID: -7232910185076945322, guid: cb60bafb03ec4de4ab622ca295fca762, type: 3}
   spline: {fileID: 0}
   minion: {fileID: 1451485442180339657, guid: 09aabbf9cbd9043428ae68326b547217, type: 3}
+  bagSprite: {fileID: 0}
 --- !u!61 &4541112495932477672
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -182,7 +194,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 24.350002, y: 38.22}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
