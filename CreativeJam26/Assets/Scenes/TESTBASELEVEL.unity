@@ -1888,6 +1888,7 @@ GameObject:
   - component: {fileID: 1783722090}
   - component: {fileID: 1783722089}
   - component: {fileID: 1783722088}
+  - component: {fileID: 1783722093}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1907,8 +1908,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f153bdd90f9e74b9ac1a5621b9166e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  menuGroup: {fileID: 0}
-  buildButton: {fileID: 0}
+  menuGroup: {fileID: 1783722093}
+  buildButtons:
+  - {fileID: 850497440}
+  - {fileID: 1010335453}
+  - {fileID: 1275133108}
   upgradeButton: {fileID: 0}
   towerPrefab: {fileID: 0}
 --- !u!114 &1783722089
@@ -1995,6 +1999,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &1783722093
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783722087}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1801085674
 GameObject:
   m_ObjectHideFlags: 0

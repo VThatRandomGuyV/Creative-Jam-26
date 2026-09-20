@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class TowerMenuManager : MonoBehaviour
 {
@@ -7,11 +8,11 @@ public class TowerMenuManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private CanvasGroup menuGroup;
-    [SerializeField] private GameObject buildButton;
+    [SerializeField] private GameObject[] buildButtons;
     [SerializeField] private GameObject upgradeButton;
 
     [Header("Tower Settings")]
-    [SerializeField] private GameObject towerPrefab;
+    [SerializeField] private GameObject[] towerPrefabs;
 
     private TowerSlot currentActiveSlot;
     private Camera cam;
@@ -39,8 +40,9 @@ public class TowerMenuManager : MonoBehaviour
     {
         currentActiveSlot = slot;
         menuGroup.transform.position = cam.WorldToScreenPoint(worldPosition);
-
-        buildButton.SetActive(!hasTower);
+        for (int i = 0; i <  (buildButtons).Length; i++){
+        buildButtons[i].SetActive(!hasTower);
+        }
         upgradeButton.SetActive(hasTower);
 
         openedFrame = Time.frameCount;
@@ -57,10 +59,11 @@ public class TowerMenuManager : MonoBehaviour
 
     private bool ClickTooSoon() => Time.frameCount <= openedFrame;
 
-    public void OnBuildButtonPressed()
+    public void OnBuildButtonPressed(int _towerPrefab)
     {
-        if (ClickTooSoon() || currentActiveSlot == null || towerPrefab == null) return;
-        currentActiveSlot.BuildTower(towerPrefab);
+        int quality = _towerPrefab%3;
+        if (ClickTooSoon() || currentActiveSlot == null || towerPrefabs[_towerPrefab] == null) return;
+        currentActiveSlot.BuildTower(towerPrefabs[_towerPrefab]);
         CloseMenu();
     }
 

@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   baby: 0
+  ruin: {fileID: 5161444981658192627, guid: f194fde2708dd054094805f82c2f7652, type: 3}
 --- !u!61 &6329192206557473319
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -293,6 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   baby: 1
+  ruin: {fileID: 5161444981658192627, guid: f194fde2708dd054094805f82c2f7652, type: 3}
 --- !u!61 &4149059678693905806
 BoxCollider2D:
   m_ObjectHideFlags: 0
