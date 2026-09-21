@@ -106,9 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ebd149dbd72404f9c47f2a75263a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  health: 4
+  health: 5
   speed: 3
-  gold: 7
+  gold: 10
   progress: 0
   spawnFrequency: 5
   isSpawner: 1
@@ -170,7 +170,6 @@ MonoBehaviour:
   sideSprite: {fileID: 7149986899233334647, guid: bf68f407cf7f44445a5358a85e353fa2, type: 3}
   spline: {fileID: 0}
   minion: {fileID: 1451485442180339657, guid: 5884f33c65c384b45b9844386eadf93d, type: 3}
-  bagSprite: {fileID: 0}
 --- !u!61 &2641609763646554425
 BoxCollider2D:
   m_ObjectHideFlags: 0

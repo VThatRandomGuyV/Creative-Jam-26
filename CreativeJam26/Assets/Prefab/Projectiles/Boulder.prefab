@@ -113,7 +113,7 @@ MonoBehaviour:
   rotates: 1
   slows: 0
   isAOE: 0
-  aoeObject: {fileID: 0}
+  AOESprite: {fileID: 0}
 --- !u!50 &589263071727152929
 Rigidbody2D:
   serializedVersion: 5
@@ -176,4 +176,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.2

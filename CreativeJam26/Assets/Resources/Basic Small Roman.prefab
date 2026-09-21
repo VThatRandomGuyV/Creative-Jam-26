@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,9 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ebd149dbd72404f9c47f2a75263a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  health: 5
-  speed: 5
-  gold: 1
+  health: 2
+  speed: 3
+  gold: 2
   progress: 0
   spawnFrequency: 0
   isSpawner: 0
@@ -155,7 +155,6 @@ MonoBehaviour:
   sideSprite: {fileID: 5997349659520937270, guid: ce9810ba815011d46a8731f5c3fcda41, type: 3}
   spline: {fileID: 0}
   minion: {fileID: 1451485442180339657}
-  bagSprite: {fileID: 0}
 --- !u!61 &8704283090527259277
 BoxCollider2D:
   m_ObjectHideFlags: 0
