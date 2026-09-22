@@ -42,10 +42,7 @@ public class Enemy_Controller : MonoBehaviour {
     private float randomSoundTimer;
     private bool isDying;
     private bool hasReachedEnd;
-    public Sprite bagSprite;
     private float holdSprite;
-    private float dying;
-    private bool wobbleOff;
     private float slowTimer;
     private float speedModifier;
     
@@ -114,66 +111,50 @@ public class Enemy_Controller : MonoBehaviour {
         TickAudio();
         
         // control wobble
-        if (!wobbleOff) {
-            // move wobbleState between 0 and 1 (left and right)
-            if (wobbleDirection) angleState += Time.deltaTime * wobbleSpeed; 
-            else angleState -= Time.deltaTime * wobbleSpeed;
-            // if reach either end of the lerp, clamp and go other direction
-            if (angleState > 1f) {
-                angleState = 1f; 
-                wobbleDirection = false;
+        // move wobbleState between 0 and 1 (left and right)
+        if (wobbleDirection) angleState += Time.deltaTime * wobbleSpeed; 
+        else angleState -= Time.deltaTime * wobbleSpeed;
+        // if reach either end of the lerp, clamp and go other direction
+        if (angleState > 1f) {
+            angleState = 1f; 
+            wobbleDirection = false;
+        }
+        if (angleState < 0f) {
+            angleState = 0f; 
+            wobbleDirection = true;
+        }
+        // evaluate curve based on state and apply rotation
+        var angle = (wobbleLerp.Evaluate(angleState) -.5f) * wobbleAmount *2;
+        transform.eulerAngles = new Vector3(0, 0, angle);   
+        
+        // control sprite by direction
+        Vector3 difference = transform.position - lastPosition;
+        // moving side to side
+        if (Mathf.Abs(difference.x) > Mathf.Abs(difference.y)){
+            GetComponent<SpriteRenderer>().sprite = sideSprite;
+            // moving right
+            if (difference.x >= 0) {
+                GetComponent<SpriteRenderer>().flipX = true;
             }
-            if (angleState < 0f) {
-                angleState = 0f; 
-                wobbleDirection = true;
-            }
-            // evaluate curve based on state and apply rotation
-            var angle = (wobbleLerp.Evaluate(angleState) -.5f) * wobbleAmount *2;
-            transform.eulerAngles = new Vector3(0, 0, angle);   
-            
-            // control sprite by direction
-            Vector3 difference = transform.position - lastPosition;
-            // moving side to side
-            if (Mathf.Abs(difference.x) > Mathf.Abs(difference.y)){
-                GetComponent<SpriteRenderer>().sprite = sideSprite;
-                // moving right
-                if (difference.x >= 0) {
-                    GetComponent<SpriteRenderer>().flipX = true;
-                }
-                // moving left
-                else {
-                    GetComponent<SpriteRenderer>().flipX = false;
-                }
-            }
-            // moving front to backW
+            // moving left
             else {
-                // moving front
-                if (difference.y <= 0) {
-                    GetComponent<SpriteRenderer>().flipX = false;
-                    GetComponent<SpriteRenderer>().sprite = frontSprite;
-                }
-                // moving back
-                else {
-                    GetComponent<SpriteRenderer>().flipX = false;
-                    GetComponent<SpriteRenderer>().sprite = backSprite;
-                }
+                GetComponent<SpriteRenderer>().flipX = false;
             }
         }
-        
+        // moving front to backW
+        else {
+            // moving front
+            if (difference.y <= 0) {
+                GetComponent<SpriteRenderer>().flipX = false;
+                GetComponent<SpriteRenderer>().sprite = frontSprite;
+            }
+            // moving back
+            else {
+                GetComponent<SpriteRenderer>().flipX = false;
+                GetComponent<SpriteRenderer>().sprite = backSprite;
+            }
+        }
         lastPosition = transform.position;
-        
-        if (dying > 0) {
-            dying +=  Time.deltaTime;
-            transform.position = spline.GetPositionOnSpline(holdSprite);
-            if (dying >= 2) {
-                for (int i = 0; i < 5; i++) {
-                    GameObject newObject = Instantiate(minion);
-                    AELM.AddEnemyToList(newObject);
-                    newObject.GetComponent<Enemy_Controller>().progress = holdSprite;
-                }
-                DestroyImmediate(gameObject);
-            }
-        }
     }
 
     private void TickAudio() {
@@ -206,11 +187,11 @@ public class Enemy_Controller : MonoBehaviour {
             isDying = true;
             AudioManager.Play(AudioCue.EnemyDeath, soundOverrides);
             if (isTransport) {
-                holdSprite = progress;
-                GetComponent<SpriteRenderer>().sprite = bagSprite;
-                transform.localScale = new Vector3(0.06f, .06f, .06f);
-                wobbleOff = true;
-                dying = 1;
+                for (int i = 0; i < 5; i++) {
+                    GameObject newObject = Instantiate(minion);
+                    AELM.AddEnemyToList(newObject);
+                    newObject.GetComponent<Enemy_Controller>().progress = progress;
+                }
             }
 
             if (spline == GameObject.Find("SplieFuture").GetComponent<Spline>()) {

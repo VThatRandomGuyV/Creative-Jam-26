@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,9 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ebd149dbd72404f9c47f2a75263a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  health: 20
+  health: 40
   speed: 5
-  gold: 6
+  gold: 20
   progress: 0
   spawnFrequency: 0
   isSpawner: 0
@@ -150,12 +150,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  frontSprite: {fileID: -8023468379799180842, guid: afde289777eb8af4682e1091be0f3855, type: 3}
+  frontSprite: {fileID: 3588093133117098323, guid: cc96c3ad9d6ddf8449979588cba616da, type: 3}
   backSprite: {fileID: -9095382706496769416, guid: 3965ec1a0f92fae4caeed799b6e4bf50, type: 3}
   sideSprite: {fileID: -6237562245714017994, guid: 3b1fed1c36b6a7645b16d600963f616b, type: 3}
   spline: {fileID: 0}
   minion: {fileID: 1451485442180339657, guid: 09aabbf9cbd9043428ae68326b547217, type: 3}
-  bagSprite: {fileID: -6237562245714017994, guid: 3b1fed1c36b6a7645b16d600963f616b, type: 3}
 --- !u!61 &3305139843314384910
 BoxCollider2D:
   m_ObjectHideFlags: 0

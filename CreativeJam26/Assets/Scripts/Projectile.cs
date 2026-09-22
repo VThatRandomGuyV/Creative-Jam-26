@@ -16,7 +16,8 @@ public class Projectile : MonoBehaviour
     private Vector3 lastPosition;
     public bool slows;
     public bool isAOE;
-    public GameObject aoeObject;
+    public Sprite AOESprite;
+    private float AOEState;
 
 
     public void SetTarget(Transform _target)
@@ -28,47 +29,67 @@ public class Projectile : MonoBehaviour
     {
         soundOverrides = overrides;
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (!target) return;
-        Vector2 direction = (target.position - transform.position).normalized;
-        rb.linearVelocity = direction * speed;
+        if (AOEState < 1) {
+            if (!target) return;
+            Vector2 direction = (target.position - transform.position).normalized;
+            rb.linearVelocity = direction * speed;
         
-        // set sprite rotation
-        if (rotates) {
-            transform.Rotate(0, 0, 1000 * Time.deltaTime);
+            // set sprite rotation
+            if (rotates) {
+                transform.Rotate(0, 0, 1000 * Time.deltaTime);
+            }
+            else {
+                Vector3 difference = transform.position - lastPosition;
+                float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+                transform.eulerAngles = new Vector3(0, 0, angle);
+            
+                lastPosition = transform.position;
+            }
         }
         else {
-            Vector3 difference = transform.position - lastPosition;
-            float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-            transform.eulerAngles = new Vector3(0, 0, angle);
-            
-            lastPosition = transform.position;
+            AOEState += Time.deltaTime;
+            Debug.Log(AOEState);
+            transform.position = lastPosition;
+            GetComponent<Rigidbody2D>().constraints |= RigidbodyConstraints2D.FreezePositionX;
+            GetComponent<Rigidbody2D>().constraints |= RigidbodyConstraints2D.FreezePositionY;
+            GetComponent<Rigidbody2D>().constraints |= RigidbodyConstraints2D.FreezeRotation;
+            if (AOEState >= 2) {
+                Destroy(gameObject);
+            }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (hasHit) return;
-        hasHit = true;
-        AudioManager.Play(AudioCue.ProjectileImpact, soundOverrides);
-        Enemy_Controller enemy = other.gameObject.GetComponent<Enemy_Controller>();
-        if (enemy != null) enemy.TakeDamage(projectileDamage);
+        if (AOEState < 1) {
+            if (hasHit) return;
+            hasHit = true;
+            AudioManager.Play(AudioCue.ProjectileImpact, soundOverrides);
+            Enemy_Controller enemy = other.gameObject.GetComponent<Enemy_Controller>();
+            if (enemy != null) enemy.TakeDamage(projectileDamage);
         
-        if (slows) {
-            enemy.slowEnemy();
+            if (slows) {
+                enemy.slowEnemy();
+            }
+            if (isAOE) {
+                AOEState = 1.5f;
+                GetComponent<SpriteRenderer>().sprite = AOESprite;
+                transform.position = enemy.transform.position;
+                transform.rotation = Quaternion.identity;
+                lastPosition = transform.position;
+            }
+            else {
+                Destroy(gameObject);
+            }
         }
-        if (isAOE) {
-            GameObject newObject = Instantiate(aoeObject);
-            newObject.transform.position = enemy.transform.position;
+        else {
+            AudioManager.Play(AudioCue.ProjectileImpact, soundOverrides);
+            Enemy_Controller enemy = other.gameObject.GetComponent<Enemy_Controller>();
+            if (enemy != null) enemy.TakeDamage(projectileDamage);
         }
-        Destroy(gameObject);
     }
 }

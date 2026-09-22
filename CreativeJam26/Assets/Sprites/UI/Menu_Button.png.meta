@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f7b17bed8af803f498a8ce91d12e5a25
+guid: 93ef012cb75152e4aa4c133d5d44569d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8961090413319157468
-    second: Meteor_0
+      213: -2096882059006059155
+    second: Menu_Button_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -102,13 +102,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Meteor_0
+      name: Menu_Button_0
       rect:
         serializedVersion: 2
-        x: 53
-        y: 35
-        width: 323
-        height: 368
+        x: 6
+        y: 19
+        width: 578
+        height: 236
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,8 +117,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd6fb06c0403c5c70800000000000000
-      internalID: 8961090413319157468
+      spriteID: d6ddd0980e066e2e0800000000000000
+      internalID: -2096882059006059155
       vertices: []
       indices: 
       edges: []
@@ -137,7 +137,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Meteor_0: 8961090413319157468
+      Menu_Button_0: -2096882059006059155
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

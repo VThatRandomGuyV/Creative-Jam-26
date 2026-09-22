@@ -6,7 +6,6 @@ public class ProjectileAOE : MonoBehaviour
     [SerializeField] private int projectileDamage = 1;
     
     private AudioCueEntry[] soundOverrides;
-    private bool hasHit;
     private float timeAlive;
     private Vector3 position1;
 
@@ -30,8 +29,7 @@ public class ProjectileAOE : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (hasHit) return;
-        hasHit = true;
+        Debug.Log("this does a thing");
         AudioManager.Play(AudioCue.ProjectileImpact, soundOverrides);
         Enemy_Controller enemy = other.gameObject.GetComponent<Enemy_Controller>();
         if (enemy != null) enemy.TakeDamage(projectileDamage);

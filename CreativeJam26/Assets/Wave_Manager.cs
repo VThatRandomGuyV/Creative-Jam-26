@@ -15,6 +15,7 @@ public class Wave_Manager : MonoBehaviour {
 
     void Awake() {
         spawner = enemySpawner.GetComponent<Enemy_Spawner>();
+        gameTime = -15;
         
         waves = new List<(GameObject, int, float)> { // enemy prefab, number to spawn, time it spawns
             (enemies[0], 5, 6),

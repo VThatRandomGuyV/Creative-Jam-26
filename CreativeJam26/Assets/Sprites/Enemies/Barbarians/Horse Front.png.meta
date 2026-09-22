@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: afde289777eb8af4682e1091be0f3855
+guid: cc96c3ad9d6ddf8449979588cba616da
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2952740698718643514
-    second: IMG_7376_0
+      213: 3588093133117098323
+    second: Horse Front_0
   - first:
-      213: -8023468379799180842
-    second: IMG_7376_1
+      213: -937700771869680908
+    second: Horse Front_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_7376_0
+      name: Horse Front_0
       rect:
         serializedVersion: 2
         x: 492
@@ -120,14 +120,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6ca59039af1c507d0800000000000000
-      internalID: -2952740698718643514
+      spriteID: 359867ca1b77bc130800000000000000
+      internalID: 3588093133117098323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IMG_7376_1
+      name: Horse Front_1
       rect:
         serializedVersion: 2
         x: 3432
@@ -142,8 +142,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6d9ad7bc40ae6a090800000000000000
-      internalID: -8023468379799180842
+      spriteID: 4fa191bbd1e9cf2f0800000000000000
+      internalID: -937700771869680908
       vertices: []
       indices: 
       edges: []
@@ -162,8 +162,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IMG_7376_0: -2952740698718643514
-      IMG_7376_1: -8023468379799180842
+      Horse Front_0: 3588093133117098323
+      Horse Front_1: -937700771869680908
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
